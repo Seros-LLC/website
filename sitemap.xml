@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://seros.dev/</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/services</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/work</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/pricing</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/contact</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/security</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/privacy</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/terms</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/acceptable-use</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/dpa</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/subprocessors</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/cookies</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/billing</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://seros.dev/ai</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/services</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/work</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/pricing</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/contact</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/security</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/privacy</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/terms</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/acceptable-use</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/dpa</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/subprocessors</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/cookies</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/billing</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
+  <url><loc>https://seros.dev/ai</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq></url>
 </urlset>

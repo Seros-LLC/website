@@ -62,92 +62,92 @@
   "redirects": [
     {
       "source": "/login",
-      "destination": "https://app.seros.dev/login",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/signup",
-      "destination": "https://app.seros.dev/signup",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/queue",
-      "destination": "https://app.seros.dev/queue",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/tasks",
-      "destination": "https://app.seros.dev/tasks",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/ask",
-      "destination": "https://app.seros.dev/ask",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/digest",
-      "destination": "https://app.seros.dev/digest",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/connect",
-      "destination": "https://app.seros.dev/connect",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/connect/(.*)",
-      "destination": "https://app.seros.dev/connect/$1",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/channels",
-      "destination": "https://app.seros.dev/channels",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/members",
-      "destination": "https://app.seros.dev/members",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/members/(.*)",
-      "destination": "https://app.seros.dev/members/$1",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/audit",
-      "destination": "https://app.seros.dev/audit",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/auth/(.*)",
-      "destination": "https://app.seros.dev/auth/$1",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/oauth/(.*)",
-      "destination": "https://app.seros.dev/oauth/$1",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/confirm",
-      "destination": "https://app.seros.dev/confirm",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/logout",
-      "destination": "https://app.seros.dev/logout",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/password",
-      "destination": "https://app.seros.dev/password",
+      "destination": "/work",
       "permanent": false
     },
     {
       "source": "/set-password",
-      "destination": "https://app.seros.dev/set-password",
+      "destination": "/work",
       "permanent": false
     }
   ]

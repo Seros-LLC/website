@@ -33,7 +33,7 @@ PAGES = [
     ("SECURITY.md",                 "security.html",       "Security",
      "How Seros, LLC protects client data and builds securely, and how to report a vulnerability."),
     ("REFUND-AND-BILLING-POLICY.md","billing.html",        "Billing and Payment",
-     "How Seros, LLC quotes, invoices and is paid for development engagements."),
+     "How Seros, LLC quotes, invoices and is paid for consulting and build engagements."),
     ("AI-DISCLOSURE.md",            "ai.html",             "How Seros uses AI",
      "Plain-language explanation of how Seros, LLC uses AI models in its work and in what it builds."),
 ]
@@ -64,8 +64,17 @@ def substitute(text):
     return TOKEN.sub(repl, text), missing
 
 
+PAGE_TITLES = {src: title for src, _out, title, _desc in PAGES}
+
+
 def rewrite_published_links(text):
-    """Map links to published Markdown sources onto their deployed HTML pages."""
+    """Map links to published Markdown sources onto their deployed HTML pages.
+
+    A link whose visible text is the source file name (``[SUBPROCESSORS.md](...)``)
+    gets the page title instead, so readers never see repository file names.
+    """
+    for source, title in PAGE_TITLES.items():
+        text = re.sub(rf"\[`?{re.escape(source)}`?\]\(", f"[{title}](", text, flags=re.IGNORECASE)
     for source, output in PUBLISHED_LINKS.items():
         text = re.sub(
             rf"(\]\()({re.escape(source)})(?=[)#\s])",

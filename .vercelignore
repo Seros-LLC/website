@@ -1,0 +1,8 @@
+# Repository internals are not part of the public site.
+*.md
+.impeccable/
+.github/
+tools/
+site.json
+LICENSE
+__pycache__/

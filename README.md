@@ -1,74 +1,64 @@
 # seros.dev — marketing site
 
-Static HTML. No framework, no build step for the marketing pages. The legal pages are
-generated from Markdown so the contracts have one source of truth.
+Static HTML for Seros, LLC, an AI and agentic consulting firm. There is no framework and
+no build step for the marketing pages. The legal pages are generated from the private
+`legal` repository, so each policy has one source of truth.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
-| `index.html` | Home page (hand-written) |
-| `assets/styles.css` | The whole design system: palette, type scale, components |
-| `assets/seros-hero.png` | Discobolus engraving, ink on transparent, derived from the brand art |
-| `assets/og-card-2026-09.jpg` | 1200x630 social card (rename on change: assets are cached immutable) |
-| `site.json` | Company facts + `draft` flag used to fill legal placeholders |
+| `index.html`, `services.html`, `pricing.html`, `work.html`, `contact.html` | Hand-written marketing pages |
+| `assets/styles.css` | The whole design system: tokens, type, components. The canonical palette |
+| `assets/studio-motion.js` | Scroll and entrance motion (respects `prefers-reduced-motion`) |
+| `assets/seros-hero.png` | Discobolus engraving, ink on transparent, from the brand art |
+| `assets/og-card-2026-09.jpg` | 1200x630 social card. Rename it on change, because assets are cached as immutable |
+| `site.json` | Company facts used to fill `[[PLACEHOLDER]]` tokens in the legal pages |
 | `tools/build.py` | Renders `../legal/*.md` into themed HTML pages |
-| `privacy.html`, `terms.html`, ... | **Generated. Do not edit by hand.** |
+| `privacy.html`, `terms.html`, … | **Generated. Do not edit by hand.** |
+| `DESIGN.md`, `PRODUCT.md`, `.impeccable/` | Design-agent context. Not deployed (see `.vercelignore`) |
 
-## Build the legal pages
+## Build and check
 
 ```bash
-python3 tools/build.py            # render
-python3 tools/build.py --check    # report unresolved [[PLACEHOLDER]] tokens, write nothing
-python3 tools/check-links.py      # fail on missing HTML references or an obsolete /demo rewrite
+python3 tools/build.py              # render the legal pages (needs ../legal and `pip install markdown`)
+python3 tools/build.py --check      # report unresolved placeholders, write nothing
+python3 tools/check-links.py        # every href/src resolves; legacy app paths redirect to /work
+python3 tools/check-positioning.py  # current positioning on the studio pages
 ```
 
-`site.json` drives substitution. While `"draft": true`:
+CI runs all of these on every push. It also fails on stale generated pages, missing
+`<title>`/viewport/description tags, and committed secrets.
 
-* every generated page carries a visible draft banner,
-* every generated page is `noindex`,
-* unresolved placeholders are left visible instead of failing the build.
+`site.json` has `"draft": false`, because counsel has reviewed the published pack. With
+draft off, the build refuses to run while any placeholder in a published page is unfilled.
+Templates write `[[GA_COUNTY]] County, Georgia`, so `GA_COUNTY` holds only the county
+name (`Murray`).
 
-Set `"draft": false` only after counsel has reviewed the pack. The build then refuses to
-run while any placeholder is unfilled.
+Bump `styles.css?v=N` in every HTML file **and** in `tools/build.py` together. Otherwise
+the stale-generated-pages check fails.
 
 ## Design system
 
-Palette and type come from the founder's brand board:
-
-| Token | Hex | Use |
-|---|---|---|
-| `--seros` | `#0009AD` | Primary. Links, buttons, accents |
-| `--ink` | `#283053` | Body text, headings, the engraving |
-| `--steel` | `#608ACD` | Eyebrows, labels, rules |
-| `--sky` | `#B8DAFF` | Washes, numerals |
-| `--paper` | `#EDE7DE` | Page background |
-| `--grey` | `#E8E8E9` | Secondary surfaces |
-
-Headings are Georgia (serif). Body and labels are Courier New. Imagery is classical
-black-and-white engraving on paper. No stock photography, no gradients-as-decoration,
-no emoji.
+`assets/styles.css` (`:root`) is the source of truth, and `DESIGN.md` describes the
+intent. In short: a deep cobalt field (`--seros-blue #0b155d`, `--seros-night #030620`),
+white as the accent on dark surfaces, `--seros-ink-accent #1230b8` as the accent on light
+surfaces, and paper (`#eef0ff`) for document pages. Headings and body are Georgia; labels
+and record metadata are Courier New. The only imagery is the real Seros engraving. No
+stock photography and no emoji.
 
 ## Deploy
 
-Static hosting; `vercel.json` sets security headers and long-lived asset caching.
+A push to `main` auto-deploys to https://seros.dev, which is Vercel project `seros-website`.
+`vercel.json` sets the security headers, asset caching and the legacy-path redirects.
+`.vercelignore` keeps repository internals (`*.md`, `tools/`, `site.json`, `.impeccable/`)
+off the public site.
 
-**Production domain note:** `seros.dev` is currently aliased to Vercel project
-`seros-website`, not the similarly named `website` project. A Git push to this repository
-must either be connected to `seros-website` in Vercel, or deployed explicitly from this
-directory:
+If a deploy has to be run by hand:
 
 ```bash
 npx vercel link --yes --project seros-website
 npx vercel --prod --yes
 ```
 
-After deploying, verify the live home page at `https://seros.dev/`. Do not move the domain
-to the other Vercel project casually: its configuration may not match the production site.
-Point the apex domain at the host once `seros.dev` is registered — see
-`../business/OPERATIONS-CHECKLIST.md`.
-
-## Before this goes live
-
-See `../SITE-TODO.md`. In short: register the domain, stand up the mailboxes referenced
-on the pages, get the legal pack reviewed, then flip `draft` to false and rebuild.
+Afterwards, check the live page: `curl -sS -o /dev/null -w '%{http_code}' https://seros.dev/`.

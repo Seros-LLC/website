@@ -36,7 +36,7 @@
   "FEATURE_DEPRECATION_NOTICE_DAYS": "90",
   "FORCE_MAJEURE_DAYS": "30",
   "FREE_TIER_CAP": "no free tier at launch",
-  "GA_COUNTY": "Murray County, Georgia",
+  "GA_COUNTY": "Murray",
   "INFORMAL_RESOLUTION_DAYS": "30",
   "INVOICING_THRESHOLD": "$5,000 per year",
   "LATE_INTEREST_RATE": "1.0% per month, or the maximum the law allows, whichever is lower",

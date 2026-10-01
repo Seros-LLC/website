@@ -8,36 +8,36 @@ web
 
 ## Users
 
-Inferred from the existing product copy and application: delivery leads, product leads, operations leaders, and technical agencies whose commitments are made in Slack but must be tracked in Linear. Their job is to close the hand-off from a specific conversation to an owned task without losing source context.
+Business owners and operators who already understand what AI agents are and want to know where they genuinely pay off in their own operations. Buyers who need agents explained from first principles are a published bad fit (see /pricing). No target market is claimed publicly.
 
 ## Product Purpose
 
-Seros turns commitments from explicitly selected Slack channels into proposed Linear issues. The human reviewer edits, confirms, or rejects every proposal before Seros writes anything to the tracker.
+seros.dev is the marketing and trust site for Seros, LLC, an AI and agentic consulting firm. It explains six services and how an engagement runs, and asks for one action: book a scoping call by email.
 
 ## Positioning
 
-Seros is a permissioned, human-confirmed commitment-to-task workflow: it does not autonomously create tracker work, and it does not ingest channels the workspace has not selected.
+Consulting first; building is how the advice gets delivered. Seros finds where AI pays off, says plainly where it does not, and designs, builds and runs agents with a person approving every consequential step. Advice arrives in writing.
+
+## Services
+
+AI strategy and readiness assessment; advisory retainer; agentic workflow automation; AI-native custom CRM; custom builds and integrations; care plan.
 
 ## Operating Context
 
-A workspace owner creates a workspace, connects Slack, selects in-scope channels, and reviews drafts in an application queue. Confirmed work is written to Linear with source context. Members can inspect confirmed tasks and audit records.
-
-## Capabilities and Constraints
-
-Slack is connected by an owner or admin; unticked channels are not read. A proposed owner or due date is retained only where supported by the conversation. Linear is the production tracker integration. Production must not expose synthetic or demo paths. The site is static HTML; the application is server-rendered TypeScript/Express with CSP-safe markup.
+Static HTML on Vercel. Legal pages are generated from the private legal repository by tools/build.py. The Slack-to-tracker application Seros built is paused and appears only on /work as evidence of delivery capability. Lead generation is on hold: the site has no lead form, only an email address.
 
 ## Evidence on Hand
 
-Existing repository copy, application views, setup flow, and brand art. There are no approved customer testimonials, pricing plans, performance benchmarks, or certification claims; future marketing must not invent them.
+The public app repository (Seros-LLC/app) and the specification repository (Seros-LLC/seros). There are no clients, testimonials, results, logos, case studies, benchmarks or certifications. The only published number is the $150 per hour time-and-materials rate. Future copy must not invent any of these.
 
 ## Product Principles
 
-- Human confirmation is mandatory before every tracker write.
-- Channel scope is chosen explicitly, not inferred.
-- Source context must survive the Slack-to-tracker hand-off.
-- A missed commitment is preferable to an unreviewed task.
-- The product should make accountability clearer, not add automation theater.
+- People approve every consequential step an agent takes.
+- Advice is written down; nothing important is decided in an unrecorded conversation.
+- Say plainly where AI is not worth applying.
+- Fixed scope, weekly demos, code in the client's repository.
+- No claim the business cannot evidence today.
 
 ## Accessibility & Inclusion
 
-Inferred constraint: the web experiences should meet WCAG 2.2 AA where practical, including keyboard-operable controls, meaningful form states, responsive layout, and reduced-motion support.
+The site should meet WCAG 2.2 AA: keyboard-operable controls, visible focus, responsive layout without clipping at narrow widths, and reduced-motion support.

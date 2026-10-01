@@ -1,19 +1,20 @@
 ---
 name: Seros Oath Gate
-description: Permissioned Slack-to-Linear commitments, carried to a human confirmation threshold.
+description: AI and agentic consulting. Agents do the work; a person opens the final threshold.
 colors:
-  cobalt: "#183bd1"
-  cobalt-deep: "#10279a"
-  midnight: "#091c81"
+  night: "#030620"
+  blue-deep: "#050a31"
+  blue: "#0b155d"
+  ink: "#080d4a"
+  vellum: "#e9eafa"
+  paper: "#eef0ff"
+  ice: "#e2e5ff"
+  accent-dark: "#ffffff"   # Signal White, accent on dark surfaces
+  accent-light: "#1230b8"  # Signal Ink, accent on light surfaces
+  lilac: "#dbe6ff"
+  prism: "#a8c4ff"
   steel: "#608acd"
-  ice: "#dce9ff"
-  vellum: "#f3efe2"
-  paper: "#f6f7fb"
-  ink: "#0a1f78"
-  gold: "#ffffff"   # Signal White — accent on dark surfaces
-  ink_accent: "#1230b8"   # accent counterpart on light surfaces
-  mint: "#73e5bd"
-  amber: "#ffd166"
+  amber: "#ffd166"         # focus and review only
   white: "#fff"
 typography:
   display:
@@ -48,20 +49,22 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.white}"
-    textColor: "{colors.cobalt-deep}"
+    textColor: "{colors.blue-deep}"
     rounded: "{rounded.artifact}"
     padding: "1rem 1.3rem"
   button-primary-hover:
     backgroundColor: "transparent"
     textColor: "{colors.white}"
   button-nav:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.midnight}"
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.blue-deep}"
     rounded: "{rounded.artifact}"
     padding: "0.62rem 0.85rem"
 ---
 
 # Design System: Seros Oath Gate
+
+> Token values in the front matter mirror `assets/styles.css` `:root`, which is the source of truth. If they disagree, the CSS wins. Fix this file.
 
 ## Overview
 
@@ -83,28 +86,24 @@ The experience is direct, sober, and operational. Monumental serif declarations 
 The palette separates signal, record, review, and confirmation instead of using color as generic decoration.
 
 ### Primary
-- **Cobalt Authority** (`#183bd1`): The active Seros field and high-energy brand surface.
-- **Deep Cobalt** (`#10279a`): Hero foundation, primary dark text, closing actions, and authoritative thresholds.
-- **Midnight Threshold** (`#091c81`): Site frame, footer, and the Oath Gate wordmark detail.
+- **Cobalt Field** (`#0b155d`, `--seros-blue`): The page background on marketing surfaces and the brand field.
+- **Deep Cobalt** (`#050a31`, `--seros-blue-deep`): Text on white buttons, closing actions, deep bands.
+- **Night** (`#030620`, `--seros-night`): Site frame and the darkest bands.
 
 ### Secondary
-- **Vellum Record** (`#f3efe2`): The warm document surface for legal and trust pages.
-- **Signal Steel** (`#608acd`): Supporting marks and secondary signal details.
-- **Ice Reading** (`#dce9ff`): Secondary copy on dark fields.
+- **Paper** (`#eef0ff`, `--seros-paper`) and **Vellum** (`#e9eafa`): Document and workflow surfaces.
+- **Ink** (`#080d4a`, `--seros-ink`): Copy and rules on paper.
+- **Ice** (`#e2e5ff`): Secondary copy on dark fields.
+- **Steel** (`#608acd`): Supporting marks and secondary signal details.
 
-### Tertiary
-- **Signal White** (`#ffffff`): The accent on dark fields — rules, seals, navigation launch control, the human-witness marker.
-  Because it is a *value* rather than a hue it cannot be read on light surfaces; use **Signal Ink** (`#1230b8`) there
+### Accent
+- **Signal White** (`#ffffff`, `--seros-gold`): The accent on dark fields: rules, seals, the navigation action, the human-witness marker.
+  Because it is a *value* rather than a hue it cannot be read on light surfaces; use **Signal Ink** (`#1230b8`, `--seros-ink-accent`) there
   (doc banners, inline code, the close band CTA). Picking the wrong one of the pair makes the accent vanish.
-- **Human Confirmation Mint** (`#73e5bd`): Confirmed workflow state and selected high-confidence detail.
-- **Review Amber** (`#ffd166`): Focus visibility and cautious review state only.
+- **Lilac** (`#dbe6ff`) and **Prism** (`#a8c4ff`): Dimmed accent for large areas, route strokes and gradient stops.
+- **Review Amber** (`#ffd166`): Keyboard focus and cautious review state only.
 
-### Neutral
-- **Paper White** (`#f6f7fb`): Review artifact and high-contrast light surface.
-- **Record Ink** (`#0a1f78`): Vellum-page copy and rules.
-- **Pure White** (`#fff`): Primary foreground on blue fields and default primary action surface.
-
-**The State Is Not Ornament Rule.** Mint means confirmed, amber means review or focus, and electric aqua means an Oath Gate or structural seal. Do not use them as interchangeable decorative accents.
+**The State Is Not Ornament Rule.** Amber means focus or review. White on dark and Signal Ink on light mark the single most important element. Do not use them as interchangeable decorative accents. (The former mint confirmation colour is retired; `--seros-green` is an alias of lilac.)
 
 ## Typography
 
@@ -148,13 +147,13 @@ Do not replace the real Seros engraving with generic gods, wings, laurel clip ar
 ### Buttons
 - **Character:** Clear hand-off controls, not soft SaaS pills.
 - **Shape:** Nearly square (`0.2rem`) with a 1px border and uppercase serif label.
-- **Primary:** White on deep cobalt in the hero; deep cobalt on mint in the closing band. Base padding is `1rem 1.3rem` with a `3.45rem` minimum height.
+- **Primary:** White on the cobalt field in the hero; Signal Ink on paper in the closing band. Base padding is `1rem 1.3rem` with a `3.45rem` minimum height.
 - **Launch navigation:** Gold on midnight, padding `0.62rem 0.85rem`.
 - **Hover / Focus:** Hover moves an action upward by 2–3px and inverts to a transparent field where context allows. Keyboard focus is a 3px amber outline offset by 5px.
 
 ### Navigation
 - **Style:** An absolute editorial rail, a SEROS wordmark, thin electric-aqua structural rule, and uppercase serif links.
-- **Mobile:** Keep the brand and app launch action; collapse ordinary rail links below `650px`.
+- **Mobile:** Keep the brand and the Book-a-call action; the nav drops to its own row below `650px`.
 
 ### Review Artifact — Oath Gate
 - **Character:** A field log, not a dashboard card.
@@ -171,15 +170,15 @@ Do not replace the real Seros engraving with generic gods, wings, laurel clip ar
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use cobalt authority, vellum records, and gold seals as the primary material conversation.
-- **Do** make the selected-channel scope, human confirmation, and Linear destination easy to find without relying on imagery.
+- **Do** use the cobalt field, paper records, and white seals as the primary material conversation.
+- **Do** make human approval of consequential steps, written advice, and the scoping-call action easy to find without relying on imagery.
 - **Do** use the real Seros engraving with enough presence to read as an intentional figure, while preserving copy contrast.
 - **Do** let route motion resolve once toward a visible stop, and honor `prefers-reduced-motion`.
 - **Do** keep legal and trust pages readable first, using the system in the frame rather than theatrically inside dense copy.
 
 ### Don't:
-- **Don't** portray Seros as autonomous, magical, or able to write tracker work without a human decision.
+- **Don't** portray agents Seros builds as autonomous or magical, or as acting on consequential steps without a human decision.
 - **Don't** use generic SaaS card grids, rounded pills, stock mythology, cartoon iconography, or colored glow shadows.
-- **Don't** use mint, amber, or electric aqua without their established state or structural meaning.
+- **Don't** use amber or the accent pair without their established state or structural meaning.
 - **Don't** make mono the default reading voice or hide product proof inside decorative route graphics.
 - **Don't** turn legal pages into marketing compositions at the cost of scannability.

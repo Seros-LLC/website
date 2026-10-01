@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """Fail when an HTML reference cannot be resolved locally or as an approved app link.
 
-The marketing site owns static pages. The application owns its canonical
-``https://app.seros.dev`` origin: OAuth state cookies, provider callbacks, forms and
-sessions must all stay on that host. Legacy ``seros.dev`` app paths are redirects,
-not transparent rewrites, so a request never starts on one host and completes its
-stateful flow on another.
+The marketing site owns static pages. The Slack-to-tracker application is paused
+(its host returns DEPLOYMENT_PAUSED), so no page may link to it, and old bookmarks to
+its former ``seros.dev`` paths redirect to ``/work``, which explains the paused
+product, instead of to a dead host. Redirects are never transparent rewrites.
 
-This check makes both boundaries explicit. An internal link must resolve to a site
-page. An app link must be an approved canonical URL. Each legacy redirect must point
-to the matching app path, which prevents an old bookmark from becoming a dead end.
+An internal link must resolve to a site page. A link to the paused app host is a
+failure. Every legacy redirect must land on a page that exists on this site.
 """
 import json
 import re
@@ -31,7 +29,8 @@ class References(HTMLParser):
                 self.values.append(value)
 
 
-APP_ORIGIN = "https://app.seros.dev"
+PAUSED_APP_HOST = "app.seros.dev"
+LEGACY_DESTINATION = "/work"
 
 
 def route_matchers(config):
@@ -45,12 +44,8 @@ def route_matchers(config):
     return matchers
 
 
-def app_path(reference):
-    """Return the app path for a canonical app URL, otherwise None."""
-    parsed = urlparse(reference)
-    if parsed.scheme != "https" or parsed.netloc != "app.seros.dev":
-        return None
-    return parsed.path or "/"
+def is_paused_app_link(reference):
+    return urlparse(reference).netloc == PAUSED_APP_HOST
 
 
 def main():
@@ -75,11 +70,9 @@ def main():
             parsed = urlparse(reference)
             if reference.startswith(("#", "data:")):
                 continue
-            canonical_app_path = app_path(reference)
-            if canonical_app_path is not None:
+            if is_paused_app_link(reference):
                 checked += 1
-                if not any(rx.match(canonical_app_path) for _src, _dest, rx in matchers):
-                    failures.append(f"{page.name}: {reference} is not an approved app route")
+                failures.append(f"{page.name}: {reference} links to the paused app host")
                 continue
             if parsed.scheme:
                 continue
@@ -93,30 +86,32 @@ def main():
                 target = ROOT / path.lstrip("/")
                 if target.exists() or target.with_suffix(".html").exists():
                     continue
-                failures.append(f"{page.name}: {reference} is neither a site page nor a canonical app URL")
+                failures.append(f"{page.name}: {reference} is not a site page")
                 continue
 
             target = (page.parent / path).resolve()
             if not target.exists():
                 failures.append(f"{page.name}: {reference}")
 
-    # Old bookmarks may still use seros.dev routes. Keep them as ordinary redirects
-    # and ensure every destination is on the canonical app origin with the same path.
+    # Old bookmarks may still use the paused app's seros.dev routes. Send them to the
+    # page that explains the paused product, never to the paused host.
+    work_page = ROOT / (LEGACY_DESTINATION.lstrip("/") + ".html")
+    if matchers and not work_page.exists():
+        failures.append(f"{LEGACY_DESTINATION} does not exist but legacy redirects target it")
     for source, destination, _rx in matchers:
-        expected = APP_ORIGIN + source.replace("(.*)", "$1")
-        if destination != expected:
-            failures.append(f"vercel.json: {source} must redirect to {expected}, got {destination}")
+        if destination != LEGACY_DESTINATION:
+            failures.append(f"vercel.json: {source} must redirect to {LEGACY_DESTINATION}, got {destination}")
 
     print(f"checked {checked} HTML href/src references")
     if matchers:
-        print("legacy app paths redirect to app.seros.dev: "
+        print(f"legacy app paths redirect to {LEGACY_DESTINATION}: "
               + ", ".join(src for src, _dest, _rx in matchers))
     if failures:
         print("BROKEN REFERENCES:")
         for failure in failures:
             print(f"  {failure}")
         raise SystemExit(1)
-    print("every reference resolves to a site page or canonical app URL")
+    print("every reference resolves to a site page")
 
 
 if __name__ == "__main__":
