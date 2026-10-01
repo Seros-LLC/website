@@ -92,6 +92,6 @@
   "WARRANTY_CURE_DAYS": "30",
   "WARRANTY_PERIOD_DAYS": "30",
   "WEBSITE_URL": "https://seros.dev",
-  "_note": "Values come from ../legal/RECOMMENDED-DEFAULTS.md. draft=true keeps generated pages noindex and bannered.",
+  "_note": "Source of truth for company facts filled into the legal pages by tools/build.py. draft=false: the build fails if a published page has an unfilled placeholder.",
   "draft": false
 }
