@@ -108,7 +108,10 @@ def shell(title, desc, canonical, body):
 <meta name="robots" content="{'noindex' if DRAFT else 'index,follow'}">
 <meta property="og:title" content="{title} — Seros, LLC">
 <meta property="og:description" content="{desc}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{CFG['WEBSITE_URL']}{canonical}">
 <meta property="og:image" content="{CFG['WEBSITE_URL']}/assets/og-card-2026-09.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
