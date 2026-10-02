@@ -470,7 +470,7 @@ footer.site { overflow: clip; }
    laptop size. Let it run wider and size to viewport height as well as width. */
 @media (min-width: 901px) {
   .hero-copy { max-width: 60rem; }
-  .hero-copy h1 { max-width: 15ch; font-size: clamp(3.6rem, min(6vw, 9vh), 7.4rem); line-height: .92; }
+  .hero-copy h1 { max-width: 15ch; font-size: clamp(3.6rem, min(6vw, 8.5vh), 7.4rem); line-height: .92; }
   .hero-layout { padding-top: clamp(7.75rem, 16vh, 11rem); padding-bottom: 4rem; }
   .hero-copy .lede { margin-top: 1.4rem; }
   .hero-copy .cta { margin-top: 1.6rem; }
