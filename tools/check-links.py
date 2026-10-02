@@ -22,11 +22,22 @@ class References(HTMLParser):
     def __init__(self):
         super().__init__()
         self.values = []
+        self.ids = set()
 
     def handle_starttag(self, _tag, attrs):
         for name, value in attrs:
             if name in ("href", "src") and value:
                 self.values.append(value)
+            if name == "id" and value:
+                self.ids.add(value)
+
+
+def page_ids(path, cache={}):
+    if path not in cache:
+        parser = References()
+        parser.feed(path.read_text(encoding="utf8"))
+        cache[path] = parser.ids
+    return cache[path]
 
 
 PAUSED_APP_HOST = "app.seros.dev"
@@ -68,7 +79,12 @@ def main():
         parser.feed(page.read_text(encoding="utf8"))
         for reference in parser.values:
             parsed = urlparse(reference)
-            if reference.startswith(("#", "data:")):
+            if reference.startswith("data:"):
+                continue
+            if reference.startswith("#"):
+                checked += 1
+                if reference[1:] and reference[1:] not in parser.ids:
+                    failures.append(f"{page.name}: {reference} has no matching id on the page")
                 continue
             if is_paused_app_link(reference):
                 checked += 1
@@ -81,10 +97,21 @@ def main():
                 continue
             checked += 1
 
+            if path.endswith(".html"):
+                # cleanUrls 308-redirects *.html; link the canonical route instead.
+                failures.append(f"{page.name}: {reference} uses a .html path; link the clean route")
+                continue
+
             if path.startswith("/"):
                 # An absolute internal link belongs to the static marketing site.
                 target = ROOT / path.lstrip("/")
-                if target.exists() or target.with_suffix(".html").exists():
+                page_file = target.with_suffix(".html") if not target.suffix else target
+                if path == "/":
+                    page_file = ROOT / "index.html"
+                if target.exists() or page_file.exists():
+                    if parsed.fragment and page_file.suffix == ".html" and page_file.exists() \
+                            and parsed.fragment not in page_ids(page_file):
+                        failures.append(f"{page.name}: {reference} has no matching id on {page_file.name}")
                     continue
                 failures.append(f"{page.name}: {reference} is not a site page")
                 continue
@@ -92,6 +119,21 @@ def main():
             target = (page.parent / path).resolve()
             if not target.exists():
                 failures.append(f"{page.name}: {reference}")
+
+    # security.txt is plain text, so its seros.dev URLs are checked here too.
+    sectxt = ROOT / ".well-known" / "security.txt"
+    if sectxt.exists():
+        for url in re.findall(r"https://seros\.dev(/[^\s#]*)(?:#(\S+))?", sectxt.read_text(encoding="utf8")):
+            path, fragment = url
+            checked += 1
+            if path.startswith("/.well-known/"):
+                target = ROOT / path.lstrip("/")
+            else:
+                target = ROOT / (path.strip("/") + ".html") if path.strip("/") else ROOT / "index.html"
+            if not target.exists():
+                failures.append(f"security.txt: {path} is not a site page")
+            elif fragment and fragment not in page_ids(target):
+                failures.append(f"security.txt: {path}#{fragment} has no matching id")
 
     # Old bookmarks may still use the paused app's seros.dev routes. Send them to the
     # page that explains the paused product, never to the paused host.
