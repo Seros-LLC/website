@@ -475,3 +475,9 @@ footer.site { overflow: clip; }
   .hero-copy .lede { margin-top: 1.4rem; }
   .hero-copy .cta { margin-top: 1.6rem; }
 }
+
+/* Focus on light surfaces: the amber ring is ~1.2:1 against vellum/paper (WCAG 1.4.11
+   needs 3:1). Header and footer stay dark, so only light content areas switch. */
+body:not(.signal-site) main :is(a, button, [tabindex="0"]):focus-visible,
+.workflow-band :is(a, button):focus-visible,
+.close-band :is(a, button):focus-visible { outline-color: var(--seros-ink-accent); }
