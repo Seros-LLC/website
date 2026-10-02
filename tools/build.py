@@ -42,7 +42,9 @@ PAGES = [
 # Keep links between published legal pages pointing at the generated HTML files.
 # This is intentionally limited to documents in PAGES: links to internal legal
 # work product must not accidentally become public routes.
-PUBLISHED_LINKS = {src: out for src, out, _title, _desc in PAGES}
+# Links use the clean, canonical route (/privacy), not the file name: Vercel's
+# cleanUrls 308-redirects every *.html request, and canonical tags omit the suffix.
+PUBLISHED_LINKS = {src: "/" + out.removesuffix(".html") for src, out, _title, _desc in PAGES}
 
 NAV = [("Services", "/services"), ("Work", "/work"), ("Engagements", "/pricing"),
        ("Security", "/security")]
