@@ -12,7 +12,7 @@ Business owners and operators who already understand what AI agents are and want
 
 ## Product Purpose
 
-seros.dev is the marketing and trust site for Seros, LLC, an AI and agentic consulting firm. It explains six services and how an engagement runs, and asks for one action: book a scoping call by email.
+seros.dev is the marketing and trust site for Seros, LLC, an AI and agentic consulting firm. It explains six services and how an engagement runs, and asks for one action: book a free discovery call by email.
 
 ## Positioning
 

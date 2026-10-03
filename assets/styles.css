@@ -1,3 +1,4 @@
+@font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/source-serif-4-latin-600-normal.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 /* Seros marketing site — cobalt editorial system, inspired by Hermes Agent's cinematic hierarchy. */
 :root {
   /* ---- Surfaces: deep navy at night, cool paper by day ---- */
@@ -33,6 +34,7 @@
   /* ---- Type and metrics ---- */
   --serif: Georgia, 'Times New Roman', serif;
   --mono:  'Courier New', Courier, monospace;
+  --display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --max:   1440px;
 }
 * { box-sizing: border-box; }
@@ -481,3 +483,33 @@ footer.site { overflow: clip; }
 body:not(.signal-site) main :is(a, button, [tabindex="0"]):focus-visible,
 .workflow-band :is(a, button):focus-visible,
 .close-band :is(a, button):focus-visible { outline-color: var(--seros-ink-accent); }
+
+/* Hero review (2026-10-03). Headlines: the 800-weight uppercase Georgia at .78 line-height read
+   as crammed. Display headings use self-hosted Source Serif 4 (OFL, assets/fonts) at 600, in
+   sentence case, with open leading. Body copy stays Georgia. */
+h1, h2 { font-family: var(--display); font-weight: 600; text-transform: none; letter-spacing: -.015em; line-height: 1.04; }
+h2 { line-height: 1.08; }
+
+/* Centred hero: one column, offer first, then the call, then the video. */
+.hero-layout { justify-items: center; }
+.hero-copy, .hero-copy h1 { margin-inline: auto; text-align: center; }
+.hero-copy .lede { margin-inline: auto; max-width: 40ch; }
+.hero-copy .cta { flex-direction: column; justify-content: center; align-items: center; gap: .9rem; }
+.hero-note { margin: 0; color: var(--seros-ice); font-size: .95rem; line-height: 1.4; }
+.hero-vsl { width: 100%; max-width: 46rem; margin: 2.4rem auto 0; }
+.hero-vsl[hidden] { display: none; }
+.hero-vsl video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--seros-night); }
+.hero-vsl figcaption { margin-top: .7rem; color: var(--seros-ice); font: 700 .72rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+/* With the copy centred, text crosses the engraving at every width. Phones already dim it to
+   .22 for that reason; tablets and desktops follow, and it sits closer to the right edge. */
+@media (min-width: 651px) {
+  .signal-hero .mythic-field img { opacity: .24; right: clamp(-18rem, -14vw, -6rem); }
+}
+@media (min-width: 901px) {
+  .hero-copy h1 { max-width: 18ch; font-size: clamp(3.4rem, min(5.6vw, 8vh), 6.6rem); line-height: 1.02; }
+}
+@media (max-width: 650px) {
+  h1 { font-size: clamp(2.4rem, 10.5vw, 3.2rem); letter-spacing: -.01em; }
+  .hero-copy .lede { font-size: 1.05rem; }
+  .hero-copy .btn.primary { width: 100%; justify-content: center; }
+}

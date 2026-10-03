@@ -18,17 +18,17 @@ colors:
   white: "#fff"
 typography:
   display:
-    fontFamily: "Georgia, 'Times New Roman', serif"
-    fontSize: "clamp(3.8rem, 7.2vw, 8.2rem)"
-    fontWeight: 800
-    lineHeight: 0.78
-    letterSpacing: "-0.04em"
+    fontFamily: "'Source Serif 4', Georgia, 'Times New Roman', serif"
+    fontSize: "clamp(3.4rem, min(5.6vw, 8vh), 6.6rem)"
+    fontWeight: 600
+    lineHeight: 1.02
+    letterSpacing: "-0.015em"
   headline:
-    fontFamily: "Georgia, 'Times New Roman', serif"
+    fontFamily: "'Source Serif 4', Georgia, 'Times New Roman', serif"
     fontSize: "clamp(3rem, 6vw, 6.5rem)"
-    fontWeight: 800
-    lineHeight: 0.84
-    letterSpacing: "-0.04em"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-0.015em"
   body:
     fontFamily: "Georgia, 'Times New Roman', serif"
     fontSize: "clamp(1.05rem, 1.5vw, 1.32rem)"
@@ -107,11 +107,11 @@ The palette separates signal, record, review, and confirmation instead of using 
 
 ## Typography
 
-**Display Font:** Georgia (with `'Times New Roman', serif` fallback)
+**Display Font:** Source Serif 4, weight 600, self-hosted at `/assets/fonts/` (SIL OFL 1.1; the CSP forbids font CDNs), Georgia fallback. Sentence case. Since 2026-10-03, replacing 800-weight uppercase Georgia at .78 line-height, which read as crammed on phones.
 **Body Font:** Georgia (with `'Times New Roman', serif` fallback)
 **Label/Mono Font:** `'Courier New', Courier, monospace`
 
-**Character:** The serif is oversized, compressed, and declarative. The mono face is reserved for signals, state, timestamps, labels, and record-like metadata; it must not take over reading copy.
+**Character:** The display serif is large, open, and declarative. The mono face is reserved for signals, state, timestamps, labels, and record-like metadata; it must not take over reading copy.
 
 ### Hierarchy
 - **Display** (800, `clamp(3.8rem, 7.2vw, 8.2rem)`, 0.78 line-height): Hero declarations in uppercase, at a maximum of roughly 12 characters per line.
@@ -171,7 +171,7 @@ Do not replace the real Seros engraving with generic gods, wings, laurel clip ar
 
 ### Do:
 - **Do** use the cobalt field, paper records, and white seals as the primary material conversation.
-- **Do** make human approval of consequential steps, written advice, and the scoping-call action easy to find without relying on imagery.
+- **Do** make human approval of consequential steps, written advice, and the discovery-call action easy to find without relying on imagery.
 - **Do** use the real Seros engraving with enough presence to read as an intentional figure, while preserving copy contrast.
 - **Do** let route motion resolve once toward a visible stop, and honor `prefers-reduced-motion`.
 - **Do** keep legal and trust pages readable first, using the system in the frame rather than theatrically inside dense copy.
