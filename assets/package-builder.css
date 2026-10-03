@@ -1,0 +1,78 @@
+/* /packages: the package builder. Uses the shared tokens in styles.css; headings keep the
+   shared --display face. Main content sits on vellum (focus ring: --seros-ink-accent);
+   the summary panel is dark (focus ring: --seros-amber). */
+.doc.pb-page { max-width: 1180px; }
+.pb-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
+@media (min-width: 901px) {
+  .pb-layout { grid-template-columns: minmax(0, 1.35fr) minmax(19rem, 1fr); gap: 3rem; align-items: start; }
+  /* A full package is taller than a laptop screen: cap the sticky panel and let it scroll,
+     so the send button is never stranded below the fold while the form scrolls. */
+  .pb-summary { position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; overscroll-behavior: contain; }
+  .pb-jump { display: none; }
+}
+.pb-jump { margin: 1.5rem 0 0; }
+.pb-jump .text-link { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Steps */
+.pb-form { margin: 0; }
+.pb-step { min-width: 0; margin: 0 0 2rem; padding: 0; border: 0; }
+.pb-step legend { display: block; width: 100%; margin: 0 0 .4rem; padding: 0; font: 600 clamp(1.35rem, 2.4vw, 1.75rem)/1.15 var(--display, var(--serif)); color: var(--seros-blue-deep); }
+.pb-step-no { display: block; margin-bottom: .45rem; color: var(--seros-ink-accent); font: 700 .75rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.pb-hint { margin: 0 0 1rem; color: #263878; font-size: .95rem; }
+.pb-options { display: grid; grid-template-columns: minmax(0, 1fr); gap: .65rem; }
+
+/* One option = one label wrapping a real input: the whole card is the tap target. */
+.pb-option { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .2rem .75rem; align-items: start; min-height: 44px; padding: .85rem 1rem; border: 1px solid rgba(10,31,120,.28); border-radius: .9rem; background: rgba(255,255,255,.5); cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+.pb-option:hover { border-color: var(--seros-ink-accent); }
+.pb-option:has(input:checked) { border-color: var(--seros-ink-accent); background: var(--seros-ink-wash); box-shadow: inset 0 0 0 1px var(--seros-ink-accent); }
+.pb-option input { grid-row: 1 / span 2; width: 1.25rem; height: 1.25rem; margin: .15rem 0 0; accent-color: var(--seros-ink-accent); cursor: pointer; }
+.pb-option-name { font-weight: 700; color: var(--seros-ink); line-height: 1.3; }
+.pb-option-desc { grid-column: 2; color: #263878; font-size: .92rem; line-height: 1.45; }
+.pb-option input:focus-visible { outline: 3px solid var(--seros-ink-accent); outline-offset: 3px; }
+
+/* Context fields */
+.pb-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
+@media (min-width: 651px) { .pb-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pb-field-wide { grid-column: 1 / -1; } }
+.pb-field label { display: block; margin-bottom: .4rem; font-weight: 700; color: var(--seros-ink); }
+.pb-field .pb-optional { font-weight: 400; color: #263878; }
+.pb-field input, .pb-field select, .pb-field textarea { display: block; width: 100%; min-height: 44px; padding: .65rem .8rem; border: 1px solid rgba(10,31,120,.45); border-radius: .6rem; background: #fff; color: var(--seros-ink); font: 1rem/1.4 var(--serif); }
+.pb-field textarea { min-height: 8rem; resize: vertical; }
+.pb-field :is(input, select, textarea):focus-visible { outline: 3px solid var(--seros-ink-accent); outline-offset: 2px; border-color: var(--seros-ink-accent); }
+.pb-privacy { margin: 1rem 0 0; color: #263878; font-size: .9rem; }
+.pb-reset { min-height: 44px; margin-top: .5rem; padding: .6rem 1rem; border: 1px solid var(--seros-ink-accent); border-radius: 999px; background: transparent; color: var(--seros-ink-accent); font: 700 .75rem/1 var(--serif); letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.pb-reset:hover { background: var(--seros-ink-wash); }
+
+/* Summary panel: a dark surface on the vellum page. */
+.pb-summary { padding: clamp(1.25rem, 3vw, 1.75rem); border-radius: 1.25rem; color: var(--seros-white); background: var(--seros-night); box-shadow: 0 18px 40px rgba(3,6,32,.25); }
+body:not(.signal-site) .doc .pb-summary h2 { max-width: none; margin: 0 0 .9rem; color: var(--seros-white); font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.pb-summary p { margin: 0; color: var(--seros-ice); }
+.pb-message { font-size: .98rem; line-height: 1.45; }
+.pb-start { margin-top: .5rem !important; color: var(--seros-lilac) !important; font: 700 .75rem/1.4 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+.pb-items { margin: 1rem 0 0; padding: 0; list-style: none; counter-reset: pb; border-top: 1px solid var(--line); }
+.doc .pb-items li + li { margin-top: 0; }
+.pb-item { position: relative; padding: .85rem 0 .85rem 2.2rem; border-bottom: 1px solid var(--line); counter-increment: pb; }
+.pb-item::before { content: counter(pb, decimal-leading-zero); position: absolute; left: 0; top: .95rem; color: var(--seros-lilac); font: 700 .75rem/1 var(--mono); }
+.pb-summary .pb-item-name { color: var(--seros-white); font-weight: 700; line-height: 1.3; }
+.pb-summary .pb-item-desc { margin-top: .25rem; font-size: .9rem; line-height: 1.45; }
+.pb-summary .pb-item-reason { margin-top: .35rem; color: var(--seros-lilac); font-size: .88rem; line-height: 1.4; }
+.pb-tag { display: inline-block; margin-left: .25rem; padding: .2rem .45rem; border: 1px solid var(--seros-lilac); border-radius: 999px; color: var(--seros-lilac); font: 700 .65rem/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; vertical-align: .1em; }
+.pb-first, .pb-notes { margin-top: 1.1rem !important; }
+.pb-notes { padding: 0 0 0 1.1rem; color: var(--seros-ice); font-size: .88rem; }
+.doc .pb-notes li { line-height: 1.45; }
+.pb-actions { display: flex; flex-direction: column; align-items: stretch; gap: .75rem; margin-top: 1.4rem; }
+body:not(.signal-site) .doc .pb-summary .btn.primary { justify-content: center; min-height: 44px; text-align: center; line-height: 1.3; color: var(--seros-night); background: var(--seros-white); border-color: var(--seros-white); }
+body:not(.signal-site) .doc .pb-summary .btn.primary:hover { color: var(--seros-white); background: transparent; }
+.pb-copy { min-height: 44px; padding: .7rem 1rem; border: 1px solid var(--seros-lilac); border-radius: 999px; background: transparent; color: var(--seros-white); font: 700 .75rem/1 var(--serif); letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.pb-copy:hover { background: rgba(219,230,255,.12); }
+.pb-copy[hidden], .pb-items[hidden], .pb-start[hidden], .pb-trim[hidden] { display: none; }
+.pb-status:empty { display: none; }
+.pb-status, .pb-trim { font-size: .88rem; }
+.pb-trim { color: var(--seros-amber) !important; }
+body:not(.signal-site) main .pb-summary :is(a, button):focus-visible { outline: 3px solid var(--seros-amber); outline-offset: 4px; }
+
+/* Without JavaScript: the static checklist replaces the live summary. */
+.pb-noscript { margin-top: 1rem; padding: 1rem; border: 1px solid var(--line); border-radius: .8rem; }
+.pb-noscript ol { margin: .5rem 0 0; padding-left: 1.2rem; color: var(--seros-ice); font-size: .9rem; }
+body:not(.signal-site) .doc .pb-noscript a { color: var(--seros-white); }
+
+@media (prefers-reduced-motion: reduce) { .pb-option { transition: none; } }

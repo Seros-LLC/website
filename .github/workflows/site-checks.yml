@@ -50,6 +50,13 @@ jobs:
       - name: Studio positioning holds
         run: python3 tools/check-positioning.py
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Package builder unit tests
+        run: node tools/test_package_builder.mjs
+
       - name: No secrets in tree
         run: |
           if grep -rInE '(sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})' --exclude-dir=.git . ; then

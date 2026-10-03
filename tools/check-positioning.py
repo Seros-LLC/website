@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-STUDIO_PAGES = ["index.html", "services.html", "work.html", "pricing.html", "contact.html"]
+STUDIO_PAGES = ["index.html", "services.html", "work.html", "pricing.html", "contact.html", "packages.html"]
 
 # Sign-up and product-status language has no place on a services site.
 BANNED_EVERYWHERE = [
@@ -46,6 +46,10 @@ REQUIRED = {
     "work.html": ["Slack-to-Linear", "in-house product"],
     "pricing.html": ["$150 per hour", "fixed-fee", "Readiness assessment", "Advisory retainer", "/contact"],
     "contact.html": ["mailto:team@seros.dev"],
+    "packages.html": ["AI strategy and readiness assessment", "Advisory retainer",
+                      "Agentic workflow automation", "AI-native custom CRM",
+                      "Custom builds and integrations", "Care plan", "$150 per hour",
+                      "discovery call", "/contact"],
 }
 
 SITEMAP_URLS = [
@@ -54,6 +58,7 @@ SITEMAP_URLS = [
     "https://seros.dev/work",
     "https://seros.dev/pricing",
     "https://seros.dev/contact",
+    "https://seros.dev/packages",
 ]
 
 
