@@ -11,6 +11,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const JS_PATH = join(ROOT, 'assets', 'package-builder.js');
 const HTML_PATH = join(ROOT, 'packages.html');
 const CSS_PATH = join(ROOT, 'assets', 'package-builder.css');
+const SITE_TOOLS_CSS_PATH = join(ROOT, 'assets', 'site-tools.css');
 
 function load() {
   // No document: the script must expose its pure functions and skip DOM wiring.
@@ -229,9 +230,12 @@ test('shared stylesheet version is pinned consistently across every page and gen
     assert.ok(match, `${name} references the shared stylesheet`);
     versions.add(match[1]);
   }
-  assert.equal(versions.size, 1, `all pages share one stylesheet version, got ${[...versions]}`);
+  assert.deepEqual([...versions], ['13'], `all pages share stylesheet version 13, got ${[...versions]}`);
   const build = readFileSync(join(ROOT, 'tools', 'build.py'), 'utf8');
-  assert.ok(build.includes(`styles.css?v=${[...versions][0]}`), 'legal page generator uses same version');
+  assert.ok(build.includes('styles.css?v=13'), 'legal page generator uses same version');
+  for (const page of ['index.html', 'packages.html']) {
+    assert.match(readFileSync(join(ROOT, page), 'utf8'), /site-tools\.js\?v=2/);
+  }
 });
 
 test('the page respects the CSP: no inline script, style or handlers', () => {
@@ -245,7 +249,7 @@ test('the page respects the CSP: no inline script, style or handlers', () => {
     '<link rel="canonical" href="https://seros.dev/packages">', 'property="og:title"',
     'property="og:description"', 'property="og:type"', 'content="https://seros.dev/packages"',
     'content="https://seros.dev/assets/og-card-2026-09.jpg"', 'name="twitter:card"',
-    'href="/assets/styles.css?v=12"', 'href="/assets/package-builder.css?v=1"',
+    'href="/assets/styles.css?v=13"', 'href="/assets/package-builder.css?v=1"',
     '<script src="/assets/package-builder.js?v=1" defer></script>', 'aria-live="polite"']) {
     assert.ok(html.includes(tag), `page has ${tag}`);
   }
@@ -255,4 +259,7 @@ test('the page respects the CSP: no inline script, style or handlers', () => {
   const css = readFileSync(CSS_PATH, 'utf8');
   assert.ok(!/@import|url\(\s*['"]?https?:/i.test(css), 'no external CSS');
   assert.ok(css.includes('--seros-amber'), 'amber focus ring on dark');
+  const siteToolsCss = readFileSync(SITE_TOOLS_CSS_PATH, 'utf8');
+  assert.ok(!/@import|url\(\s*['"]?https?:/i.test(siteToolsCss), 'site tools CSS uses no external CSS');
+  assert.match(html, /href="\/assets\/site-tools\.css\?v=1"/);
 });

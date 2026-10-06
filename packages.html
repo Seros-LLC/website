@@ -16,9 +16,11 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
-<link rel="stylesheet" href="/assets/styles.css?v=12">
+<link rel="stylesheet" href="/assets/styles.css?v=13">
 <link rel="stylesheet" href="/assets/package-builder.css?v=1">
+<link rel="stylesheet" href="/assets/site-tools.css?v=1">
 <script src="/assets/package-builder.js?v=1" defer></script>
+<script src="/assets/site-tools.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -190,6 +192,26 @@
       </div>
     </aside>
   </div>
+
+  <section class="fit-check" aria-labelledby="fit-check-heading">
+    <h2 id="fit-check-heading">A quick workflow-fit check.</h2>
+    <p>Use this to organize your thoughts before the discovery call. It is not a score or a promise that automation is appropriate.</p>
+    <form id="workflow-fit-check" aria-label="Workflow fit check">
+      <fieldset>
+        <legend>What is true about the process?</legend>
+        <label><input type="checkbox" name="fit-repeatable"> The steps repeat often enough to describe.</label>
+        <label><input type="checkbox" name="fit-digital"> The work already touches digital systems or records.</label>
+        <label><input type="checkbox" name="fit-exceptions"> There are exceptions that need human judgment.</label>
+        <label><input type="checkbox" name="fit-consequential"> Some actions affect customers, money, or important records.</label>
+      </fieldset>
+      <button class="fit-reset" type="reset">Clear selections</button>
+      <div class="fit-result" data-fit-result aria-live="polite" aria-atomic="true">
+        <h3 data-fit-title>Start with the process, not the tool.</h3>
+        <ul data-fit-points><li>Describe the work, its inputs, and the exceptions.</li></ul>
+      </div>
+    </form>
+    <p class="fit-privacy">Nothing you select here is sent or stored. Use the notes as a prompt for a conversation, not an automated recommendation.</p>
+  </section>
 
   <p class="fineprint">This page is an offer to discuss, not a binding quotation. A binding scope and
   price appear only in a signed statement of work.</p>

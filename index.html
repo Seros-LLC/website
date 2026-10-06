@@ -17,8 +17,9 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
 <link rel="preload" href="/assets/fonts/source-serif-4-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=12">
+<link rel="stylesheet" href="/assets/styles.css?v=13">
 <script src="/assets/studio-motion.js" defer></script>
+<script src="/assets/site-tools.js?v=2" defer></script>
 </head>
 <body class="signal-site">
 <a class="skip" href="#main">Skip to content</a>
@@ -69,6 +70,36 @@
       </svg>
       <img src="/assets/seros-hero.png" alt="" decoding="async">
     </div>
+  </div>
+</section>
+
+<section class="workflow-band demo-band">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>See where a person stays in control.</h2>
+      <p>This is an illustrative demonstration, not a live client system. Step through a draft, pause at a consequential decision, then choose what happens next.</p>
+    </div>
+    <div class="site-demo" id="workflow-demo" data-demo-state="proposed" aria-labelledby="demo-title">
+      <div class="demo-route" aria-hidden="true"><span></span><span></span><span></span></div>
+      <ol class="demo-stages" aria-label="Illustrative workflow stages">
+        <li data-demo-step="proposed"><span>01</span><strong>Proposed</strong></li>
+        <li data-demo-step="review"><span>02</span><strong>Human review</strong></li>
+        <li data-demo-step="resolved"><span>03</span><strong>Decision recorded</strong></li>
+      </ol>
+      <div class="demo-record" aria-live="polite" aria-atomic="true">
+        <p class="demo-kicker" data-demo-status>Draft only</p>
+        <h3 id="demo-title" data-demo-title>A request arrives</h3>
+        <p data-demo-body>An illustrative request is organized into a draft for a person to inspect.</p>
+        <div class="demo-controls">
+          <button type="button" data-demo-next>Send draft to human review</button>
+          <button type="button" data-demo-choice="approved" hidden>Approve in this demonstration</button>
+          <button type="button" data-demo-choice="held" hidden>Hold in this demonstration</button>
+          <button type="button" data-demo-restart hidden>Start again</button>
+        </div>
+      </div>
+      <p class="demo-disclaimer">Nothing is sent, changed, or stored. The controls demonstrate the approval boundary only.</p>
+    </div>
+    <noscript><p class="demo-fallback">The demonstration needs JavaScript. The rule remains: a person reviews consequential steps before action.</p></noscript>
   </div>
 </section>
 
