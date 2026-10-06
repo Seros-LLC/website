@@ -2,7 +2,7 @@
 // Run: node tools/test_package_builder.mjs  (no dependencies; node:test + node:vm)
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import vm from 'node:vm';
@@ -220,6 +220,20 @@ test('the page copy follows the claims rules and uses clean links', () => {
   assert.ok(!/href="[^"]*\.html/.test(html), 'no .html hrefs');
 });
 
+test('shared stylesheet version is pinned consistently across every page and generator', () => {
+  const htmlFiles = readdirSync(ROOT).filter((name) => name.endsWith('.html'));
+  const versions = new Set();
+  for (const name of htmlFiles) {
+    const page = readFileSync(join(ROOT, name), 'utf8');
+    const match = page.match(/styles\.css\?v=(\d+)/);
+    assert.ok(match, `${name} references the shared stylesheet`);
+    versions.add(match[1]);
+  }
+  assert.equal(versions.size, 1, `all pages share one stylesheet version, got ${[...versions]}`);
+  const build = readFileSync(join(ROOT, 'tools', 'build.py'), 'utf8');
+  assert.ok(build.includes(`styles.css?v=${[...versions][0]}`), 'legal page generator uses same version');
+});
+
 test('the page respects the CSP: no inline script, style or handlers', () => {
   const html = readFileSync(HTML_PATH, 'utf8');
   assert.ok(!/<script(?![^>]*\bsrc=)[^>]*>/i.test(html), 'no inline <script>');
@@ -231,7 +245,7 @@ test('the page respects the CSP: no inline script, style or handlers', () => {
     '<link rel="canonical" href="https://seros.dev/packages">', 'property="og:title"',
     'property="og:description"', 'property="og:type"', 'content="https://seros.dev/packages"',
     'content="https://seros.dev/assets/og-card-2026-09.jpg"', 'name="twitter:card"',
-    'href="/assets/styles.css?v=11"', 'href="/assets/package-builder.css?v=1"',
+    'href="/assets/styles.css?v=12"', 'href="/assets/package-builder.css?v=1"',
     '<script src="/assets/package-builder.js?v=1" defer></script>', 'aria-live="polite"']) {
     assert.ok(html.includes(tag), `page has ${tag}`);
   }

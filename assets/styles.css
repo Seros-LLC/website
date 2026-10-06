@@ -513,3 +513,126 @@ h2 { line-height: 1.08; }
   .hero-copy .lede { font-size: 1.05rem; }
   .hero-copy .btn.primary { width: 100%; justify-content: center; }
 }
+
+/* Site-wide UI/UX pass: preserve the Oath Gate world, make the path through the
+   site more legible, and give reading pages the calm hierarchy of a real record. */
+:root {
+  --seros-reading: 72ch;
+  --seros-rule-light: rgba(8,13,74,.18);
+  --seros-rule-dark: rgba(219,230,255,.28);
+  --seros-focus: #ffd166;
+}
+
+html { scroll-padding-top: 1.5rem; }
+body { -webkit-font-smoothing: antialiased; }
+:focus-visible { scroll-margin-block: 1rem; }
+::selection { color: var(--seros-night); background: var(--seros-lilac); }
+
+/* A more deliberate rail: one stable alignment line, clear hover/focus affordance,
+   and enough separation to scan without turning the nav into a pill bar. */
+.rail-header { min-height: 6.25rem; }
+header.site::after { left: clamp(1rem, 5vw, 6rem); right: clamp(1rem, 5vw, 6rem); width: auto; margin-inline: 0; }
+nav.site { gap: clamp(.7rem, 1.65vw, 1.65rem); }
+nav.site > a:not(.btn-nav-app) { min-height: 44px; display: inline-flex; align-items: center; }
+.btn-nav-app { min-height: 44px; padding-inline: 1rem; }
+.brand { letter-spacing: -.025em; }
+
+/* Reading surfaces use a narrower, measured text column within a more generous frame. */
+body:not(.signal-site) .doc {
+  width: min(100% - clamp(2rem, 8vw, 11rem), 1160px);
+  max-width: 1160px;
+  padding-top: clamp(9rem, 13vw, 12rem);
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+}
+body:not(.signal-site) .doc > h1 { max-width: 15ch; margin-bottom: 1rem; font-size: clamp(2.8rem, 5.4vw, 5.8rem); line-height: 1.02; text-wrap: balance; }
+body:not(.signal-site) .doc > .lede { max-width: 62ch; margin: 0 0 clamp(2.5rem, 5vw, 4.5rem); font-size: clamp(1.08rem, 1.5vw, 1.28rem); line-height: 1.55; }
+body:not(.signal-site) .doc p:not(.lede),
+body:not(.signal-site) .doc li { max-width: var(--seros-reading); line-height: 1.68; }
+body:not(.signal-site) .doc h2 { max-width: 24ch; margin: clamp(3rem, 6vw, 5rem) 0 1rem; font-size: clamp(1.9rem, 3.6vw, 3.25rem); line-height: 1.12; }
+body:not(.signal-site) .doc h3 { margin: 1.8rem 0 .5rem; font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.25; }
+body:not(.signal-site) .doc p + p { margin-top: 1rem; }
+body:not(.signal-site) .doc section + section { margin-top: clamp(2.5rem, 5vw, 4.5rem); }
+body:not(.signal-site) .doc section > h2:first-child { padding-top: 1.2rem; border-top: 1px solid var(--seros-rule-light); }
+body:not(.signal-site) .doc a { text-decoration-thickness: .08em; text-underline-offset: .2em; }
+body:not(.signal-site) .doc :is(ol, ul) { padding-left: 1.35rem; }
+body:not(.signal-site) .doc li + li { margin-top: .7rem; }
+body:not(.signal-site) .doc strong { color: var(--seros-night); }
+body:not(.signal-site) .doc :target { scroll-margin-top: 1.5rem; }
+
+/* Service and engagement choices read as distinct editorial entries, not a generic
+   tile wall. The group stays ruled, with the content itself carrying the weight. */
+body:not(.signal-site) .doc .cards { gap: 0 clamp(1.5rem, 4vw, 4rem); margin: 1.5rem 0 0; }
+body:not(.signal-site) .doc .card,
+body:not(.signal-site) .doc .toc {
+  padding: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--seros-rule-light);
+  border-radius: 0;
+  background: transparent;
+}
+body:not(.signal-site) .doc .card h3 { margin-top: 0; color: var(--seros-blue-deep); }
+body:not(.signal-site) .doc .card p { max-width: 58ch; margin: .65rem 0 0; color: #263878; font-size: 1rem; line-height: 1.58; }
+body:not(.signal-site) .doc .banner { margin-block: 1.5rem; border-radius: .25rem; }
+
+/* The homepage stays the Oath Gate: its sequence now has clearer pacing and stronger
+   joins between the signal field, paper record, and final invitation. */
+.signal-hero { min-height: max(690px, 92svh); }
+.hero-layout { min-height: max(690px, 92svh); padding-bottom: clamp(4rem, 8vw, 7rem); }
+.workflow-band { padding-block: clamp(5rem, 9vw, 8rem); }
+.workflow-band .section-intro { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.control-grid { padding-block: clamp(5rem, 9vw, 8rem); }
+.close-band { padding-block: clamp(4rem, 8vw, 7rem); border-radius: 0; }
+.close-layout { gap: clamp(2rem, 7vw, 7rem); }
+
+/* Package builder is an Operate surface: retain its native controls and live summary,
+   sharpen its orientation and keep the sticky decision panel comfortably usable. */
+.pb-page > h1 { max-width: 14ch; }
+.pb-page > .lede { max-width: 66ch; }
+.pb-step { padding-bottom: .5rem; border-bottom: 1px solid var(--seros-rule-light); }
+.pb-option { border-radius: .35rem; }
+.pb-option:has(input:checked) { box-shadow: inset 3px 0 0 var(--seros-ink-accent); }
+.pb-summary { border-radius: .35rem; }
+
+/* Long-form legal, trust, and policy pages: quiet table rules and predictable wrapping. */
+body:not(.signal-site) .doc table { color: var(--seros-ink); border-collapse: collapse; }
+body:not(.signal-site) .doc th { color: var(--seros-blue-deep); background: rgba(18,48,184,.06); }
+body:not(.signal-site) .doc td, body:not(.signal-site) .doc th { padding: .85rem .9rem; vertical-align: top; }
+.table-scroll { border: 1px solid var(--seros-rule-light); border-radius: .25rem; background: rgba(255,255,255,.46); }
+.table-scroll:focus-visible { outline-color: var(--seros-ink-accent); }
+body:not(.signal-site) .doc .toc { padding: 1.1rem; border: 1px solid var(--seros-rule-light); background: rgba(255,255,255,.42); }
+
+/* Stable footer columns and an unmistakable boundary for the close of the page. */
+footer.site { padding-top: clamp(3rem, 6vw, 5rem); }
+footer.site .footer-grid { grid-template-columns: minmax(15rem, 1.7fr) repeat(3, minmax(8rem, 1fr)); gap: clamp(1rem, 3vw, 3rem); }
+footer.site .fineprint { line-height: 1.55; }
+
+@media (max-width: 900px) {
+  body:not(.signal-site) .doc { width: min(100% - clamp(2rem, 8vw, 4rem), 760px); }
+  body:not(.signal-site) .doc section + section { margin-top: 3rem; }
+  footer.site .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .signal-hero, .hero-layout { min-height: 0; }
+  .hero-layout { padding-top: 3.5rem; padding-bottom: 4.5rem; }
+  .workflow-band { padding-block: 4rem; }
+  .control-grid { padding-block: 4rem; }
+  .close-band { padding-block: 3.5rem; }
+  body:not(.signal-site) .doc,
+  body:not(.signal-site) .doc.doc-wide { width: calc(100% - 2rem); padding-top: 2.5rem; padding-bottom: 4rem; }
+  body:not(.signal-site) header.site + main > .doc { padding-top: 2.5rem; }
+  body:not(.signal-site) main > .doc-layout { padding-top: 2.5rem; }
+  body:not(.signal-site) .doc > h1 { font-size: clamp(2.35rem, 10vw, 3.25rem); line-height: 1.04; }
+  body:not(.signal-site) .doc > .lede { margin-bottom: 2.5rem; font-size: 1.05rem; }
+  body:not(.signal-site) .doc h2 { margin-top: 2.75rem; font-size: clamp(1.75rem, 7vw, 2.3rem); }
+  body:not(.signal-site) .doc section > h2:first-child { padding-top: .9rem; }
+  body:not(.signal-site) .doc .cards { grid-template-columns: minmax(0,1fr); }
+  body:not(.signal-site) .doc .card { padding-block: 1.15rem; }
+  body:not(.signal-site) .doc td, body:not(.signal-site) .doc th { padding: .65rem .6rem; }
+  .table-scroll { border-radius: 0; }
+  footer.site .footer-grid { gap: 1.5rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signal-hero::before, .signal-hero::after { animation: none !important; }
+}
+
+/* End site-wide interface pass. */
