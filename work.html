@@ -50,7 +50,7 @@
     <h3>What it demonstrates</h3>
     <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
       <tr><th>Capability</th><th>How it shows up in the build</th></tr>
-      <tr><td>Third-party integration</td><td>Slack OAuth with signed-request verification on every inbound event, and a server-side Linear client with its credential held only in production configuration</td></tr>
+      <tr><td>Third-party integration</td><td>Slack integration with signed-request verification on every inbound event, and a server-side Linear client with its credential held only in production configuration</td></tr>
       <tr><td>Multi-tenant isolation</td><td>Every query is scoped to a workspace, enforced by an automated check that fails the build if any module reaches past the scope boundary</td></tr>
       <tr><td>Human-in-the-loop AI</td><td>A model proposes; a task row can only be created from a recorded human confirmation. There is no code path that skips it.</td></tr>
       <tr><td>Auditability</td><td>Workspace actions are written to an audit log that database triggers make append-only, and every model call is metered against a per-workspace budget before it runs</td></tr>
