@@ -61,16 +61,6 @@
   ],
   "redirects": [
     {
-      "source": "/login",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/signup",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
       "source": "/queue",
       "destination": "/work",
       "permanent": false
@@ -117,36 +107,6 @@
     },
     {
       "source": "/audit",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/auth/(.*)",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/oauth/(.*)",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/confirm",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/logout",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/password",
-      "destination": "/work",
-      "permanent": false
-    },
-    {
-      "source": "/set-password",
       "destination": "/work",
       "permanent": false
     }
