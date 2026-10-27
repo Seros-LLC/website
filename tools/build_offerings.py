@@ -88,7 +88,7 @@ TEMPLATE = '''<!doctype html>
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1b3b6f">
 <link rel="stylesheet" href="/assets/styles.css?v=16">
-<script src="/assets/offerings.js?v=1" defer></script>
+<script src="/assets/offerings.js?v=2" defer></script>
 <script src="/assets/roman-interact.js?v=2" defer></script>
 </head>
 <body class="marketing-page">
@@ -113,6 +113,7 @@ TEMPLATE = '''<!doctype html>
     <div class="tool-field"><label for="offer-search">Search offerings</label><input id="offer-search" type="search" autocomplete="off" placeholder="Try: invoices, intake, dental, CRM"></div>
     <div class="tool-field"><label for="offer-area">Area</label><select id="offer-area"><option value="">All areas</option>{filters}</select></div>
     <div class="tool-field"><label for="offer-type">Engagement type</label><select id="offer-type"><option value="">All types</option><option value="fixed-scope-project">Fixed-scope project</option><option value="monthly-engagement">Monthly engagement</option><option value="subscription-product">Subscription product</option><option value="one-time-product">One-time product</option></select></div>
+    <button class="btn primary" type="button" data-offer-clear>Clear filters</button>
   </div>
   <p class="offer-status" aria-live="polite" data-offer-status>Showing all {total} offerings.</p>
   {sections}

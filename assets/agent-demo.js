@@ -79,7 +79,7 @@
     var next = host.querySelector('[data-demo-next]');
     var choices = [].slice.call(host.querySelectorAll('[data-demo-choice]'));
     var restart = host.querySelector('[data-demo-restart]');
-    var state = { scenario: 'invoice', step: 'received', edited: false, draft: '' };
+    var state = { scenario: 'invoice', step: 'received', edited: false, draft: null };
     var events = 0;
 
     function addLog(text) { var li = el('li'); li.appendChild(el('time', null, stamp(events++))); li.appendChild(document.createTextNode(' ' + text)); log.appendChild(li); log.scrollTop = log.scrollHeight; }
@@ -117,14 +117,24 @@
         var lab = el('label', 'demo-draft-label', 'Proposed action: ' + s.action + '. Edit the draft before deciding.');
         lab.htmlFor = 'demo-draft';
         var ta = el('textarea', 'demo-draft');
-        ta.id = 'demo-draft'; ta.rows = 5; ta.value = state.draft || s.draft;
+        ta.id = 'demo-draft'; ta.rows = 5; ta.value = state.draft === null ? s.draft : state.draft;
         ta.addEventListener('input', function () { state.draft = ta.value; if (!state.edited) { state.edited = true; addLog('Reviewer edited the draft.'); } });
         view.appendChild(lab); view.appendChild(ta);
+        var error = el('p', 'demo-draft-error');
+        error.setAttribute('role', 'alert');
+        error.hidden = true;
+        view.appendChild(error);
       }
       if (step === 'approved' || step === 'held') {
         var out = el('div', 'demo-outcome demo-outcome-' + step);
         out.appendChild(el('strong', null, step === 'approved' ? 'Approved' + (state.edited ? ' with edits' : '') + '. In a real engagement, the next step would depend on the approved scope and configured permissions.' : 'Held. Nothing happens until a person decides. The illustrative record shows the hold.'));
         out.appendChild(el('p', null, 'In this demonstration nothing was sent, paid or changed.'));
+        if (step === 'approved') {
+          var record = el('div', 'demo-approved-draft');
+          record.appendChild(el('strong', null, 'Approved draft'));
+          record.appendChild(el('p', null, state.draft === null ? s.draft : state.draft));
+          out.appendChild(record);
+        }
         view.appendChild(out);
       }
       tabs.forEach(function (t) { t.setAttribute('aria-pressed', String(t.getAttribute('data-scenario') === state.scenario)); });
@@ -140,7 +150,7 @@
     }
 
     function reset(scenario, focus) {
-      state = { scenario: scenario, step: 'received', edited: false, draft: '' };
+      state = { scenario: scenario, step: 'received', edited: false, draft: null };
       log.textContent = ''; events = 0;
       addLog('Received: ' + getScenario(scenario).label.toLowerCase() + '.');
       render(focus);
@@ -158,6 +168,13 @@
         if (state.step === 'checked') addLog('Ran ' + s.checks.length + ' policy checks. ' + flagCount(s) + ' flagged.');
         if (state.step === 'review') addLog('Paused for human review. No action taken.');
       } else if (t.hasAttribute('data-demo-choice')) {
+        if (t.getAttribute('data-demo-choice') === 'approved' && state.draft !== null && !state.draft.trim()) {
+          var warning = view.querySelector('.demo-draft-error');
+          warning.textContent = 'Add a draft before approving, or hold the request.';
+          warning.hidden = false;
+          view.querySelector('#demo-draft').focus();
+          return;
+        }
         state.step = t.getAttribute('data-demo-choice');
         addLog(state.step === 'approved' ? 'Person approved' + (state.edited ? ' an edited draft.' : ' the draft.') : 'Person held the draft. Stopped.');
       } else if (t.hasAttribute('data-demo-restart')) { reset(state.scenario, hadFocus); return; }

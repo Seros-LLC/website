@@ -42,6 +42,14 @@
     search.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(apply, 120); });
     area.addEventListener('change', apply);
     type.addEventListener('change', apply);
+    controls.querySelector('[data-offer-clear]').addEventListener('click', function () {
+      clearTimeout(timer);
+      search.value = '';
+      area.value = '';
+      type.value = '';
+      apply();
+      search.focus();
+    });
     apply();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

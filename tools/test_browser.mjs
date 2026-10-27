@@ -58,11 +58,18 @@ try {
   assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'review');
   assert.equal(await page.locator('[data-demo-choice="approved"]').evaluate(el => el === document.activeElement), true, 'focus follows review');
   assert.equal(await page.locator('.demo-checks .check-flag').count() >= 1, true, 'policy flag shown');
-  await page.locator('#demo-draft').fill('Edited reply for the reviewer.');
+  await page.locator('#demo-draft').fill('   ');
+  await page.locator('[data-demo-choice="approved"]').click();
+  assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'review');
+  assert.match(await page.locator('.demo-draft-error').innerText(), /Add a draft/);
+  assert.equal(await page.locator('#demo-draft').evaluate(el => el === document.activeElement), true);
+  await page.locator('#demo-draft').fill('Edited reply <img src=x onerror=alert(1)> for the reviewer.');
   await page.locator('[data-demo-choice="approved"]').focus();
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'approved');
   assert.match(await page.locator('.demo-outcome').innerText(), /Approved with edits/);
+  assert.match(await page.locator('.demo-approved-draft').innerText(), /Edited reply <img src=x onerror=alert\(1\)> for the reviewer/);
+  assert.equal(await page.locator('.demo-approved-draft img').count(), 0, 'edited draft is rendered as text');
   assert.ok(await page.locator('[data-demo-log] li').count() >= 5, 'audit log records each step');
   await page.locator('[data-demo-restart]').click();
   await page.locator('[data-scenario="support"]').click();
@@ -88,6 +95,9 @@ try {
   await page.locator('#offer-search').fill('');
   await page.locator('#offer-type').selectOption('monthly-engagement');
   assert.equal(await page.locator('[data-offer]:visible').count(), 17, 'type filter');
+  await page.locator('[data-offer-clear]').click();
+  assert.equal(await page.locator('[data-offer]:visible').count(), 300, 'clear resets filters');
+  assert.equal(await page.locator('#offer-search').evaluate(el => el === document.activeElement), true);
   for (const id of ['strategy', 'automation', 'care']) {
     await page.goto(base + '/services#' + id);
     assert.equal(await page.locator('#' + id).count(), 1, `service deep link ${id}`);
