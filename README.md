@@ -44,6 +44,11 @@ The browser suite covers all 16 HTML routes at four viewport sizes and exercises
 keyboard access, approve/hold/restart, package selection, reduced motion and the
 no-JavaScript fallback. It does not install browser dependencies automatically.
 
+`tools/compare_browser.mjs` uses the same environment variables to compare the
+pre-overhaul commit with the current preview. Measured results and tradeoffs are
+recorded in `docs/verification-2026-10-27.md`. Accessibility and keyboard-task
+improvements are verified, not conversion or visitor preference.
+
 CI runs the renderer, links, positioning and unit checks on every push. Browser
 checks are an additional local gate. CI also fails on stale generated pages, missing
 `<title>`/viewport/description tags, and committed secrets.
