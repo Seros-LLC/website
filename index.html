@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Seros — AI and agentic consulting for businesses</title>
-<meta name="description" content="Seros, LLC is an AI and agentic consulting firm. We find where AI agents genuinely pay off in your business, then design, build and run them with people in control.">
+<title>Seros | AI consulting. Practical systems. Human control.</title>
+<meta name="description" content="AI and agentic consulting for businesses. Seros finds where AI is worth applying, then designs, builds and runs the systems. Written advice. Human approval. Code you own.">
 <link rel="canonical" href="https://seros.dev/">
-<meta property="og:title" content="Put AI agents to work in your business.">
-<meta property="og:description" content="AI strategy, agentic automation and custom systems. Advice in writing, builds to a fixed scope.">
+<meta property="og:title" content="Make AI useful. Keep people in control.">
+<meta property="og:description" content="AI consulting, agentic workflows and custom systems. From a written plan to a working build.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://seros.dev/">
 <meta property="og:image" content="https://seros.dev/assets/og-card-2026-09.jpg">
@@ -17,134 +17,86 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
 <link rel="preload" href="/assets/fonts/source-serif-4-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=13">
-<script src="/assets/studio-motion.js" defer></script>
-<script src="/assets/site-tools.js?v=2" defer></script>
+<link rel="stylesheet" href="/assets/styles.css?v=14">
+<script src="/assets/site-tools.js?v=3" defer></script>
 </head>
 <body class="signal-site">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap rail-header">
-    <a class="brand" href="/"><img src="/assets/icon-192.png" alt=""><span>SEROS</span><small>AI consulting</small></a>
+    <a class="brand" href="/" aria-label="Seros home"><img src="/assets/icon-192.png" alt="" width="32" height="32"><span>SEROS</span><small>AI consulting</small></a>
     <nav class="site" aria-label="Primary navigation">
-      <a href="/services">Services</a>
-      <a href="/work">Work</a>
-      <a href="/pricing">Engagements</a>
-      <a href="/security">Security</a>
-      <a class="btn-nav-app" href="/contact">Book a call <span aria-hidden="true">&rarr;</span></a>
+      <a href="/services">Services</a><a href="/work">Work</a><a href="/pricing">Engagements</a><a href="/security">Security</a>
+      <a class="btn-nav-app" href="/contact">Book a call <span aria-hidden="true">&nearr;</span></a>
     </nav>
   </div>
 </header>
-
 <main id="main">
-<section class="signal-hero">
+<section class="signal-hero" aria-labelledby="hero-heading">
   <div class="wrap hero-layout">
     <div class="hero-copy">
-      <h1>Put AI agents to work in your business.</h1>
-      <p class="lede">We find where AI pays off in your operations, then build and run the agents.
-      Your people approve every step that matters.</p>
-      <div class="cta">
-        <a class="btn primary" href="/contact">Book a free discovery call <span aria-hidden="true">&rarr;</span></a>
-        <p class="hero-note">Thirty minutes. We tell you plainly whether AI is the answer.</p>
-        <a class="text-link" href="/services">See the services <span aria-hidden="true">&darr;</span></a>
-      </div>
-
-      <!-- Sales video (VSL). Hidden until the recording exists, so no empty player ships and
-           tools/check-links.py does not fail on a missing file. To publish:
-           1. add /assets/seros-vsl.mp4 (1280x720 H.264, captions burned in, under ~25 MB);
-           2. put this line inside <video>:
-              <source src="/assets/seros-vsl.mp4#t=0.1" type="video/mp4">
-           3. delete the `hidden` attribute and change preload="none" to preload="metadata". -->
-      <figure class="hero-vsl" hidden>
-        <video controls playsinline preload="none" width="1280" height="720">
-        </video>
-        <figcaption>What we do, and who it is for.</figcaption>
-      </figure>
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Independent AI &amp; agentic consulting</p>
+      <h1 id="hero-heading">Make AI useful.<br>Keep people<br><em>in control.</em></h1>
+      <p class="lede">Less repetitive work. More room for the work that matters. We find where AI pays off in your business, then design, build and run the systems.</p>
+      <div class="cta"><a class="btn primary" href="/contact">Let’s talk about your business <span aria-hidden="true">&nearr;</span></a><a class="text-link" href="#services">Explore what we do <span aria-hidden="true">&darr;</span></a></div>
+      <p class="hero-note">A free discovery call. An honest answer about fit.</p>
     </div>
+    <figure class="hero-art">
+      <div class="art-grid" aria-hidden="true"></div>
+      <div class="art-orbit orbit-one" aria-hidden="true"></div><div class="art-orbit orbit-two" aria-hidden="true"></div>
+      <p class="art-label" aria-hidden="true">Intelligence, with intention.</p>
+      <img src="/assets/seros-hero.png" alt="" width="1024" height="1024" fetchpriority="high">
+      <figcaption><span class="art-cross" aria-hidden="true">+</span><span>Built to move work forward.<br>Designed to answer to you.</span><span class="art-mark" aria-hidden="true">S / 01</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap principle-strip" aria-label="Our working principles"><p>Written advice, not a sales pitch.</p><p>Human approval where it matters.</p><p>Your systems. Your source code.</p></div>
+</section>
 
-    <div class="mythic-field" aria-hidden="true">
-      <svg class="mythic-route" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M90 728C206 653 269 742 375 600C456 491 508 529 578 398C646 271 714 286 826 145"/>
-        <path d="M90 728L245 708M375 600L478 604M578 398L680 414M826 145L796 276"/>
-        <circle cx="90" cy="728" r="11"/><circle cx="375" cy="600" r="11"/><circle cx="578" cy="398" r="11"/><circle cx="826" cy="145" r="11"/>
-      </svg>
-      <img src="/assets/seros-hero.png" alt="" decoding="async">
+<section id="services" class="services-section section-paper" aria-labelledby="services-heading">
+  <div class="wrap">
+    <p class="eyebrow">01 / What we do</p>
+    <div class="section-intro"><h2 id="services-heading">A clear plan.<br>Then a working system.</h2><p>Consulting first. Building is how the advice gets delivered. Start with the problem, not another AI subscription.</p></div>
+    <div class="service-grid">
+      <a class="service-card" href="/services#strategy"><span class="service-no">01 / Decide</span><span class="service-arrow" aria-hidden="true">&nearr;</span><h3>Find the right<br>place to start.</h3><p>AI strategy, readiness assessments and ongoing advice. Know what to automate, what to leave alone, and why.</p><span class="service-detail">Strategy &amp; advisory</span></a>
+      <a class="service-card" href="/services#automation"><span class="service-no">02 / Build</span><span class="service-arrow" aria-hidden="true">&nearr;</span><h3>Connect the tools.<br>Move the work.</h3><p>Agentic workflows, an AI-native CRM, or a custom integration. Built around the way your business actually operates.</p><span class="service-detail">Workflows &amp; custom systems</span></a>
+      <a class="service-card" href="/services#care"><span class="service-no">03 / Operate</span><span class="service-arrow" aria-hidden="true">&nearr;</span><h3>Keep it useful.<br>Keep it accountable.</h3><p>Care plans for the systems we deliver. Updates, monitoring, and a named person to call when something needs attention.</p><span class="service-detail">Care &amp; ongoing support</span></a>
     </div>
+    <div class="section-foot"><p>Six services. One accountable path from advice to delivery.</p><a class="text-link" href="/services">Explore all services <span aria-hidden="true">&rarr;</span></a></div>
   </div>
 </section>
 
-<section class="workflow-band demo-band">
-  <div class="wrap">
-    <div class="section-intro">
-      <h2>See where a person stays in control.</h2>
-      <p>This is an illustrative demonstration, not a live client system. Step through a draft, pause at a consequential decision, then choose what happens next.</p>
-    </div>
+<section class="demo-section" aria-labelledby="control-heading">
+  <div class="wrap demo-layout">
+    <div class="demo-copy"><p class="eyebrow">02 / The human boundary</p><h2 id="control-heading">Agents do the legwork.<br><em>You make the call.</em></h2><p>An agent can organize a request, prepare a draft and suggest the next step. A person approves every consequential action.</p><p>That boundary is part of the design. Not a disclaimer added at the end.</p><a class="text-link" href="/security">How we approach security <span aria-hidden="true">&rarr;</span></a></div>
     <div class="site-demo" id="workflow-demo" data-demo-state="proposed" aria-labelledby="demo-title">
-      <div class="demo-route" aria-hidden="true"><span></span><span></span><span></span></div>
-      <ol class="demo-stages" aria-label="Illustrative workflow stages">
-        <li data-demo-step="proposed"><span>01</span><strong>Proposed</strong></li>
-        <li data-demo-step="review"><span>02</span><strong>Human review</strong></li>
-        <li data-demo-step="resolved"><span>03</span><strong>Decision recorded</strong></li>
-      </ol>
-      <div class="demo-record" aria-live="polite" aria-atomic="true">
-        <p class="demo-kicker" data-demo-status>Draft only</p>
-        <h3 id="demo-title" data-demo-title>A request arrives</h3>
-        <p data-demo-body>An illustrative request is organized into a draft for a person to inspect.</p>
-        <div class="demo-controls">
-          <button type="button" data-demo-next>Send draft to human review</button>
-          <button type="button" data-demo-choice="approved" hidden>Approve in this demonstration</button>
-          <button type="button" data-demo-choice="held" hidden>Hold in this demonstration</button>
-          <button type="button" data-demo-restart hidden>Start again</button>
-        </div>
-      </div>
-      <p class="demo-disclaimer">Nothing is sent, changed, or stored. The controls demonstrate the approval boundary only.</p>
+      <div class="demo-topline"><span>Interactive working model</span><span aria-hidden="true">S / 02</span></div>
+      <ol class="demo-stages" aria-label="Illustrative workflow stages"><li data-demo-step="proposed"><span>01</span><strong>Draft</strong></li><li data-demo-step="review"><span>02</span><strong>Human review</strong></li><li data-demo-step="resolved"><span>03</span><strong>Recorded</strong></li></ol>
+      <div class="demo-record" aria-live="polite" aria-atomic="true"><p class="demo-kicker" data-demo-status>Draft only</p><h3 id="demo-title" data-demo-title>A request arrives</h3><p data-demo-body>An illustrative request is organized into a draft for a person to inspect.</p></div>
+      <div class="demo-controls"><button type="button" data-demo-next>Send draft to human review <span aria-hidden="true">&rarr;</span></button><button type="button" data-demo-choice="approved" hidden>Approve in this demonstration</button><button type="button" data-demo-choice="held" hidden>Hold in this demonstration</button><button type="button" data-demo-restart hidden>Start again</button></div>
+      <p class="demo-disclaimer">This is an illustrative demonstration, not a live client system. Nothing is sent, changed, or stored.</p>
     </div>
-    <noscript><p class="demo-fallback">The demonstration needs JavaScript. The rule remains: a person reviews consequential steps before action.</p></noscript>
+    <noscript><p class="demo-fallback">Enable JavaScript to try the demonstration. In practice, a person reviews consequential steps before action.</p></noscript>
   </div>
 </section>
 
-<section id="engagement" class="workflow-band">
-  <div class="wrap">
-    <div class="section-intro">
-      <h2>From "we should be using AI" to agents that do real work.</h2>
-      <p>Every stage ends in something you can read, use, or keep. Advice arrives in writing, and nothing
-      important is decided in a conversation nobody wrote down.</p>
-    </div>
-    <ol class="track-list">
-      <li><span class="track-no">01</span><div><h3>Discovery call</h3><p>Thirty minutes. You describe the business and the pressure on it; we say plainly whether AI is the answer.</p></div><span class="track-state scope">Free</span></li>
-      <li><span class="track-no">02</span><div><h3>AI readiness assessment</h3><p>A short, paid engagement that ends in a written map: where agents pay off, where they do not, the risks, and the order to do it in.</p></div><span class="track-state detected">Fixed fee</span></li>
-      <li><span class="track-no">03</span><div><h3>Build the agents</h3><p>Agentic workflows, an AI-native CRM, or the integration underneath them. Fixed scope, a working demo every week, code in your repository.</p></div><span class="track-state review">Weekly demo</span></li>
-      <li><span class="track-no">04</span><div><h3>Advise and care</h3><p>An advisory retainer to keep the strategy honest, and a care plan to keep the systems healthy.</p></div><span class="track-state confirmed">Yours</span></li>
+<section class="process-section section-paper" aria-labelledby="process-heading">
+  <div class="wrap"><p class="eyebrow">03 / How we work</p><div class="section-intro"><h2 id="process-heading">No mystery.<br>No disappearing act.</h2><p>A written plan, a defined scope and working demos. Every stage leaves you with something you can read, use, or keep.</p></div>
+    <ol class="process-list">
+      <li><span class="track-no">01</span><h3>Start with a conversation.</h3><p>A free, thirty-minute discovery call about the process and the pressure on it. If AI is not the answer, we say so.</p><span class="process-tag">Discovery</span></li>
+      <li><span class="track-no">02</span><h3>Put the thinking in writing.</h3><p>A paid readiness assessment maps the opportunities, risks and order of work. For a build, the scope and price are agreed before it starts.</p><span class="process-tag">Assessment</span></li>
+      <li><span class="track-no">03</span><h3>Build in the open.</h3><p>Working demos every week. Code in your repository. Any change to the scope comes with a written change to the price.</p><span class="process-tag">Delivery</span></li>
+      <li><span class="track-no">04</span><h3>Leave you in control.</h3><p>Keep the system and its source. Add ongoing advice or a care plan when you need it, rather than a dependency you cannot leave.</p><span class="process-tag">Handover &amp; care</span></li>
     </ol>
+    <div class="section-foot"><p>Professional services at $150 per hour. Fixed-fee builds quoted after discovery.</p><a class="text-link" href="/pricing">How engagements work <span aria-hidden="true">&rarr;</span></a></div>
   </div>
 </section>
 
-<section id="build" class="wrap control-grid">
-  <div class="control-copy">
-    <h2>Consulting first. Building is how the advice gets delivered.</h2>
-    <p>Most businesses do not need another AI subscription. They need someone to work out which of
-    their processes an agent can safely run, prove it on one of them, and connect it to the systems
-    they already pay for.</p>
-    <a class="text-link" href="/services">All six services <span aria-hidden="true">&rarr;</span></a>
-  </div>
-  <div class="control-cards">
-    <article><span class="card-index">A</span><h3>AI strategy</h3><p>A readiness assessment and an advisory retainer: what to automate, what to leave alone, which vendors to trust.</p></article>
-    <article><span class="card-index">B</span><h3>Agentic workflows</h3><p>Agents that carry out multi-step work across your tools, and stop for a person at every consequential decision.</p></article>
-    <article><span class="card-index">C</span><h3>AI-native CRM</h3><p>A CRM built around how you actually sell and serve, with AI that drafts, summarises and suggests next steps.</p></article>
-    <article><span class="card-index">D</span><h3>Builds and care</h3><p>The integrations and internal tools underneath, then updates, monitoring, and a named person to call.</p></article>
-  </div>
-</section>
+<section class="work-section"><div class="wrap work-layout"><p class="eyebrow">04 / Evidence, not theatre</p><div><h2>See how we think.<br>Inspect what we built.</h2><p>Our paused in-house product has a public architecture and implementation record. It is a view into our engineering approach, not a client case study or a promise of results.</p><a class="text-link" href="/work">Explore the work <span aria-hidden="true">&nearr;</span></a></div><div class="work-artifact" aria-hidden="true"><span>THE DELIVERY RECORD</span><p>Scope.<br>Decisions.<br>Source.</p><div>Open to inspection <span>&nearr;</span></div></div></div></section>
 
-<section class="close-band">
-  <div class="wrap close-layout">
-    <div><h2>Tell us where the business is losing time.</h2><p>Send a short description of the work and how it is handled today. You will get a direct answer about whether AI is worth applying to it.</p></div>
-    <div class="close-actions"><a class="btn primary" href="/contact">Book a free discovery call <span aria-hidden="true">&rarr;</span></a><a class="text-link light" href="/pricing">How we price work</a></div>
-  </div>
-</section>
+<section class="close-band"><div class="wrap close-layout"><div><p class="eyebrow">Start with the real problem</p><h2>What’s taking more<br>work than it should?</h2><p>Tell us how the work happens today. We’ll tell you plainly whether AI is worth applying to it.</p></div><div class="close-actions"><a class="btn primary" href="/contact">Book a free discovery call <span aria-hidden="true">&nearr;</span></a><p>No pitch deck required.<br>Just a process worth talking about.</p></div></div></section>
 </main>
-
 <footer class="site"><div class="wrap footer-grid">
-  <div><a class="brand foot-brand" href="/"><img src="/assets/icon-192.png" alt=""><span>SEROS</span></a><p class="foot-blurb">AI and agentic consulting for businesses.</p></div>
+  <div><a class="brand foot-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32"><span>SEROS</span></a><p class="foot-blurb">AI and agentic consulting.<br>Practical systems. Human control.</p></div>
   <div><p class="footer-label">Company</p><a href="/services">Services</a><a href="/work">Work</a><a href="/pricing">Engagements</a><a href="/packages">Build a package</a><a href="/contact">Contact</a></div>
   <div><p class="footer-label">Trust</p><a href="/security">Security</a><a href="/privacy">Privacy</a><a href="/subprocessors">Subprocessors</a></div>
   <div><p class="footer-label">Legal</p><a href="/terms">Terms</a><a href="/dpa">DPA</a><a href="/cookies">Cookies</a></div>

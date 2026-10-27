@@ -35,6 +35,8 @@
     var body = host.querySelector('[data-demo-body]');
     var status = host.querySelector('[data-demo-status]');
     function render(id) {
+      // Capture before hiding the active button, which returns focus to body.
+      var hadFocus = document.activeElement && host.contains(document.activeElement);
       var state = getDemoState(id);
       title.textContent = state.title;
       body.textContent = state.body;
@@ -50,7 +52,7 @@
       host.querySelectorAll('[data-demo-choice]').forEach(function (button) { button.hidden = id !== 'review'; });
       host.querySelectorAll('[data-demo-restart]').forEach(function (button) { button.hidden = id === 'proposed'; });
       var focusTarget = host.querySelector(id === 'review' ? '[data-demo-choice="approved"]' : (id === 'approved' || id === 'held' ? '[data-demo-restart]' : '[data-demo-next]'));
-      if (focusTarget && document.activeElement && host.contains(document.activeElement)) focusTarget.focus();
+      if (focusTarget && hadFocus) focusTarget.focus();
     }
     host.addEventListener('click', function (event) {
       var choice = event.target.closest('[data-demo-choice]');

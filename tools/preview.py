@@ -53,8 +53,9 @@ class CleanURLHandler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("127.0.0.1", port), CleanURLHandler) as httpd:
+    socketserver.ThreadingTCPServer.allow_reuse_address = True
+    socketserver.ThreadingTCPServer.daemon_threads = True
+    with socketserver.ThreadingTCPServer(("127.0.0.1", port), CleanURLHandler) as httpd:
         print(f"preview: http://localhost:{port}/  (clean URLs on, ctrl-c to stop)")
         httpd.serve_forever()
 

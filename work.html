@@ -16,9 +16,9 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
-<link rel="stylesheet" href="/assets/styles.css?v=13">
+<link rel="stylesheet" href="/assets/styles.css?v=14">
 </head>
-<body>
+<body class="marketing-page">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap rail-header">
@@ -34,22 +34,26 @@
 </header>
 
 <main class="wrap doc doc-wide" id="main">
-  <h1>What we have built.</h1>
-  <p class="lede">This page is an honest record. Seros, LLC is a new company and has not yet shipped
-  a client project, so there are no client logos or case studies here and none will be invented. What
-  there is instead is a production-grade system we designed and built ourselves, which you can judge
-  us on.</p>
+  <p class="page-kicker">Work / The engineering record</p>
+  <h1>A build you can examine, not a result we cannot prove.</h1>
+  <p class="lede">Our evidence is an in-house product, not a client case study. We built a
+  human-confirmed AI workflow and preserved its specification and engineering record.
+  It shows how we approach integration, approval boundaries and verification. It does not
+  establish client outcomes or a financial return.</p>
 
   <section aria-labelledby="product-heading">
     <h2 id="product-heading">The in-house product</h2>
     <p>Our first build was an in-house, human-confirmed AI workflow: a Slack-to-Linear delivery
     workflow that read only the channels an administrator explicitly selected, identified commitments
     in those conversations, drafted the corresponding tracker work, and refused to write anything until
-    a person reviewed and confirmed it. The implementation is now retired; the specification and
-    engineering record remain available here.</p>
+    a person reviewed and confirmed it.</p>
 
-    <h3>What it demonstrates</h3>
-    <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
+    <p><strong>Status: paused.</strong> The implementation is retired. Seros now offers consulting
+    and build engagements rather than product seats. The record below describes the build,
+    not a service currently available to buy.</p>
+
+    <h3>Engineering decisions in the build</h3>
+    <div class="table-scroll" role="region" aria-label="Engineering capabilities and implementation details" tabindex="0"><table>
       <tr><th>Capability</th><th>How it shows up in the build</th></tr>
       <tr><td>Third-party integration</td><td>Slack integration with signed-request verification on every inbound event, and a server-side Linear client with its credential held only in production configuration</td></tr>
       <tr><td>Multi-tenant isolation</td><td>Every query is scoped to a workspace, enforced by an automated check that fails the build if any module reaches past the scope boundary</td></tr>
@@ -59,8 +63,11 @@
       <tr><td>Test discipline</td><td>Typecheck, tenancy check, offline unit tests and a scored evaluation set, chained into one verification command</td></tr>
     </table></div>
 
-    <h3>Status</h3>
-    <p>The product was paused, not cancelled, and its implementation is now retired. Seros, LLC sells AI consulting and build engagements rather than seats, so the product is not open for sign-up. The engineering record stands as evidence of how we work: written specification first, decision records for every irreversible choice, and a refusal to ship a path we cannot verify.</p>
+    <h3>Read the record</h3>
+    <p>The <a href="https://github.com/Seros-LLC/seros">public specification repository</a>
+    preserves the architecture and implementation record. Use it to examine the design decisions
+    behind the capabilities above. There are no client testimonials, benchmarks or claimed
+    business results attached to this work.</p>
   </section>
 
   <section aria-labelledby="method-heading">

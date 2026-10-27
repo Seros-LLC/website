@@ -116,7 +116,7 @@ def shell(title, desc, canonical, body):
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
-<link rel="stylesheet" href="/assets/styles.css?v=13">
+<link rel="stylesheet" href="/assets/styles.css?v=14">
 <link rel="stylesheet" href="/assets/site-tools.css?v=1">
 </head>
 <body>
