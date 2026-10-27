@@ -49,7 +49,7 @@ header :focus-visible, footer :focus-visible, .signal-hero :focus-visible, .demo
 .skip:focus { top: 1rem; }
 .wrap { width: min(var(--max), calc(100% - clamp(2.5rem, 9vw, 9rem))); margin-inline: auto; }
 h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 600; letter-spacing: -.035em; }
-h1, h2 { text-wrap: balance; }
+h1, h2 { text-wrap: balance; overflow-wrap: anywhere; }
 h1 { font-size: clamp(3rem, 5.6vw, 5.5rem); line-height: 1.04; }
 h2 { font-size: clamp(2.35rem, 4vw, 4rem); line-height: 1.1; }
 h3 { font-size: 1.65rem; line-height: 1.2; }
@@ -66,7 +66,7 @@ header.site { color: var(--seros-white); background: var(--seros-night); }
 nav.site { display: flex; align-items: center; justify-content: flex-end; gap: clamp(1rem, 2.6vw, 2.5rem); }
 nav.site > a { display: inline-flex; align-items: center; min-height: 44px; font-size: .85rem; text-decoration: none; }
 nav.site > a:not(.btn-nav-app):hover, nav.site > a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--seros-prism); }
-.btn-nav-app, .btn { display: inline-flex; justify-content: center; align-items: center; gap: 1.6rem; min-height: 50px; padding: .8rem 1.15rem; border: 1px solid transparent; border-radius: 3px; font: 600 .875rem/1.5 var(--sans); text-decoration: none; transition: background .18s ease, color .18s ease, border-color .18s ease; }
+.btn-nav-app, .btn { display: inline-flex; justify-content: center; align-items: center; gap: clamp(.5rem, 2vw, 1.6rem); min-width: 0; max-width: 100%; min-height: 50px; padding: .8rem clamp(.6rem, 2vw, 1.15rem); border: 1px solid transparent; border-radius: 3px; font: 600 .875rem/1.5 var(--sans); overflow-wrap: anywhere; text-decoration: none; transition: background .18s ease, color .18s ease, border-color .18s ease; }
 nav.site .btn-nav-app { padding-inline: 1.15rem; color: var(--seros-white); border-color: var(--line); }
 nav.site .btn-nav-app:hover { color: var(--seros-night); background: var(--seros-white); border-color: var(--seros-white); }
 .btn.primary { background: var(--seros-blue); color: var(--seros-white); }
@@ -202,7 +202,7 @@ nav.site .btn-nav-app:hover { color: var(--seros-night); background: var(--seros
 footer.site { color: var(--seros-white); background: var(--seros-night); padding: 4rem 0 1.5rem; }
 .footer-grid, footer.site .cols { display: grid; grid-template-columns: 1.8fr repeat(3,1fr); gap: 2rem; }
 .footer-label, footer.site .cols h4 { color: var(--on-dark-muted); margin: 0 0 1rem; font: 400 .7rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
-footer.site a:not(.brand) { display: block; width: fit-content; min-height: 36px; padding-block: .35rem; font-size: .8rem; color: var(--seros-ice); text-decoration: none; }
+footer.site a:not(.brand) { display: block; width: fit-content; max-width: 100%; overflow-wrap: anywhere; min-height: 36px; padding-block: .35rem; font-size: .8rem; color: var(--seros-ice); text-decoration: none; }
 footer.site a:hover { text-decoration: underline; }
 .foot-blurb { max-width: 28ch; margin-top: 1.2rem; color: var(--on-dark-muted); font-size: .8rem; }
 .fineprint { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.2rem; color: var(--on-dark-muted); font-size: .7rem; }
@@ -241,9 +241,9 @@ footer.site a:hover { text-decoration: underline; }
 }
 @media (max-width: 600px) {
   .rail-header { align-items: center; }
-  nav.site { display: grid; width: 100%; grid-template-columns: repeat(4, auto); gap: .3rem .8rem; justify-content: space-between; }
-  nav.site > a { justify-content: center; font-size: .75rem; }
-  nav.site .btn-nav-app { grid-column: 1 / -1; min-height: 44px; margin-top: .35rem; justify-content: space-between; }
+  nav.site { display: flex; flex-wrap: wrap; width: 100%; gap: .3rem .8rem; justify-content: space-between; }
+  nav.site > a { min-width: 0; max-width: 100%; justify-content: center; font-size: .75rem; overflow-wrap: anywhere; }
+  nav.site .btn-nav-app { flex: 1 1 100%; min-height: 44px; margin-top: .35rem; justify-content: space-between; }
   .hero-layout { grid-template-columns: 1fr; padding-top: 2.5rem; gap: 2.5rem; padding-bottom: 2rem; }
   .hero-copy { padding: 0; }
   .hero-copy .eyebrow { max-width: none; font-size: .63rem; margin-bottom: 1.5rem; }

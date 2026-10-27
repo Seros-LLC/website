@@ -46,3 +46,19 @@ The new primary CTA sits lower on the page, not higher. Its bottom changed from 
 These observations establish concrete accessibility, keyboard-task and styling improvements, while preserving the immediate email discovery path. They do not establish visitor preference, comprehension, higher conversion, revenue, production performance or a successful live deployment. The user delegated visual direction, but has not reviewed the redesign. No push or deployment was performed.
 
 Policy pages were regenerated from their existing authoritative Markdown. Besides style links, the pre-existing DPA source/output drift restored the source's phrases “integration OAuth tokens” and “the OAuth flows”. No legal source was edited as part of the redesign. This source synchronization should be noted during any pre-deployment review.
+
+## Follow-up: secondary marketing pages
+
+The final services, engagements, work and contact pages were re-read against `PRODUCT.md`, not just the worker summary. A separate real-browser acceptance script, `tools/test_secondary_browser.mjs`, was then run with 166 assertions:
+
+- The six exact service names appear once in the intended order. Written advice, human approval, fixed scope, weekly demos, code ownership and optional care remain explicit.
+- Pricing exposes only the published $150 monetary amount and retains fixed-fee scope, net-30 terms, at-cost third-party expenses, a signed statement of work, the option to take the plan elsewhere and the first-principles bad-fit disclosure.
+- Work explicitly identifies the paused/retired in-house build, not a purchasable product or a client result, and points to the public specification repository. No external request was made to validate repository availability.
+- Actual clicks from services, pricing and work reach contact. Pricing reaches the package builder and contact links back to pricing. The contact CTA parses as an email draft to `team@seros.dev` with the expected subject. No email was sent.
+- The four pages make only same-origin GET requests during these journeys. No lead form, third-party tracking request or submission was observed.
+- Each page has a working keyboard skip link, a focus indicator, sequential headings, one primary CTA and a current-page navigation indication.
+- Twenty page/viewport/text-scale combinations cover 320px and 375px normal text, 320px and 768px at 200% root text size, and 1440px normal text. No page overflow or clipped heading/action boxes remains. Eight additional axe scans cover the enlarged-text combinations.
+
+The initial focused run failed: all four pages lacked `aria-current="page"`, and at 320px with 200% text the navigation, long CTA labels and a footer label caused overflow. The fixes added current-page semantics, made the navigation wrap naturally, constrained button spacing and allowed long labels to reflow. The same 166 checks then passed. The full 64-layout browser suite, 32 normal-size axe scans, 21 unit tests, positioning/link checks and the before/after comparison were rerun and passed after the fixes.
+
+The follow-up CSS is 22,028 bytes, compared with the original 52,163. The earlier 21,839-byte measurement above refers specifically to the first implementation commit. The CTA fold measurements and keyboard/accessibility improvements remained unchanged in the repeated comparison. Legal regeneration introduced no further differences. These checks validate the guidance and actual page workflows, not visitor comprehension or commercial results.

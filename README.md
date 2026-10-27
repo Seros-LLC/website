@@ -49,6 +49,10 @@ pre-overhaul commit with the current preview. Measured results and tradeoffs are
 recorded in `docs/verification-2026-10-27.md`. Accessibility and keyboard-task
 improvements are verified, not conversion or visitor preference.
 
+`tools/test_secondary_browser.mjs` uses the same browser environment variables for
+166 focused checks on services, engagements, work and contact, including 320px
+layouts, 200% root text scaling, buyer journeys and product-guidance preservation.
+
 CI runs the renderer, links, positioning and unit checks on every push. Browser
 checks are an additional local gate. CI also fails on stale generated pages, missing
 `<title>`/viewport/description tags, and committed secrets.
