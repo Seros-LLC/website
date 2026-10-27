@@ -30,7 +30,7 @@
 
   function initDemo() {
     var host = document.getElementById('workflow-demo');
-    if (!host) return;
+    if (!host || host.hasAttribute('data-agent-demo')) return;
     var title = host.querySelector('[data-demo-title]');
     var body = host.querySelector('[data-demo-body]');
     var status = host.querySelector('[data-demo-status]');

@@ -44,9 +44,9 @@ test('homepage and package page expose accessible, progressive-enhancement hooks
   assert.match(home, /aria-live="polite"/);
   assert.match(home, /data-demo-state="proposed"/);
   assert.match(home, /This is an illustrative demonstration/);
-  assert.match(home, /src="\/assets\/site-tools\.js\?v=3" defer/);
+  assert.match(home, /src="\/assets\/site-tools\.js\?v=4" defer/);
   assert.match(packages, /id="workflow-fit-check"/);
-  assert.match(packages, /src="\/assets\/site-tools\.js\?v=3" defer/);
+  assert.match(packages, /src="\/assets\/site-tools\.js\?v=4" defer/);
   assert.match(packages, /name="fit-repeatable"/);
   assert.match(packages, /name="fit-digital"/);
   assert.match(packages, /name="fit-exceptions"/);

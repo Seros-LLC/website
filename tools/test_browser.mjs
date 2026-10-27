@@ -43,7 +43,7 @@ try {
         const bounds = await link.boundingBox();
         assert.ok(bounds && bounds.height >= 44, `${route}: navigation hit area`);
       }
-      if (shots && ['/', '/services', '/contact', '/packages'].includes(route) && [375,1440].includes(width)) {
+      if (shots && ['/', '/services', '/contact', '/packages', '/offerings'].includes(route) && [375,1440].includes(width)) {
         await page.screenshot({ path: join(shots, `${route === '/' ? 'home' : route.slice(1)}-${width}.png`), fullPage: true });
       }
       layouts++;
@@ -53,17 +53,41 @@ try {
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
   assert.equal(await page.evaluate(() => location.hash), '#main', 'skip link reaches content');
-  await page.locator('[data-demo-next]').click();
+  const advance = async () => { for (let i = 0; i < 3; i++) await page.locator('[data-demo-next]').click(); };
+  await advance();
   assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'review');
   assert.equal(await page.locator('[data-demo-choice="approved"]').evaluate(el => el === document.activeElement), true, 'focus follows review');
+  assert.equal(await page.locator('.demo-checks .check-flag').count() >= 1, true, 'policy flag shown');
+  await page.locator('#demo-draft').fill('Edited reply for the reviewer.');
+  await page.locator('[data-demo-choice="approved"]').focus();
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'approved');
+  assert.match(await page.locator('.demo-outcome').innerText(), /Approved with edits/);
+  assert.ok(await page.locator('[data-demo-log] li').count() >= 5, 'audit log records each step');
   await page.locator('[data-demo-restart]').click();
-  await page.locator('[data-demo-next]').click();
+  await page.locator('[data-scenario="support"]').click();
+  assert.equal(await page.locator('[data-scenario="support"]').getAttribute('aria-pressed'), 'true');
+  await advance();
+  assert.equal(await page.locator('.demo-checks .check-flag').count(), 2, 'support scenario has two flags');
   await page.locator('[data-demo-choice="held"]').click();
   assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'held');
   await page.locator('[data-demo-restart]').click();
   assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'proposed');
+  await page.locator('[data-scenario="intake"]').click();
+  await advance();
+  assert.match(await page.locator('.demo-checks').innerText(), /BAA/);
+  await page.locator('[data-demo-choice="held"]').click();
+  assert.equal(await page.locator('#workflow-demo').getAttribute('data-demo-state'), 'held');
+  await page.goto(base + '/offerings');
+  assert.equal(await page.locator('[data-offer]:visible').count(), 300, 'all offerings visible');
+  await page.locator('#offer-search').fill('dental recall');
+  await page.waitForFunction(() => /Showing [0-9]+ of 300/.test(document.querySelector('[data-offer-status]').textContent));
+  assert.ok(await page.locator('[data-offer]:visible').count() >= 1, 'search finds offerings');
+  await page.locator('#offer-search').fill('zzzz-no-match');
+  await page.waitForFunction(() => !document.querySelector('[data-offer-empty]').hidden);
+  await page.locator('#offer-search').fill('');
+  await page.locator('#offer-type').selectOption('monthly-engagement');
+  assert.equal(await page.locator('[data-offer]:visible').count(), 17, 'type filter');
   for (const id of ['strategy', 'automation', 'care']) {
     await page.goto(base + '/services#' + id);
     assert.equal(await page.locator('#' + id).count(), 1, `service deep link ${id}`);
@@ -83,6 +107,10 @@ try {
   await staticPage.goto(base);
   assert.ok(await staticPage.locator('noscript').isVisible(), 'no-JS explanation visible');
   assert.ok(await staticPage.locator('.hero-copy .btn').isVisible(), 'primary CTA works without JS');
+  assert.equal(await staticPage.locator('.demo-controls').isVisible(), false, 'demo controls hidden without JS');
+  await staticPage.goto(base + '/offerings');
+  assert.equal(await staticPage.locator('[data-offer]:visible').count(), 300, 'all catalog entries work without JS');
+  assert.equal(await staticPage.locator('[data-offer-controls]').isVisible(), false, 'filters hidden without JS');
   await noJS.close();
   assert.deepEqual(errors, [], 'no uncaught browser errors');
   console.log(`PASS: ${layouts} real-browser page/viewport checks, keyboard skip link, approve/hold/restart, service deep links, package summary, reduced motion and no-JS fallback.`);
