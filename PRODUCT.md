@@ -28,7 +28,7 @@ Static HTML on Vercel. Legal pages are generated from the private legal reposito
 
 ## Evidence on Hand
 
-The public app repository (Seros-LLC/app) and the specification repository (Seros-LLC/seros). There are no clients, testimonials, results, logos, case studies, benchmarks or certifications. The only published number is the $150 per hour time-and-materials rate. Future copy must not invent any of these.
+The public specification repository (Seros-LLC/seros) preserves the architecture and implementation record of the paused in-house application. There are no clients, testimonials, results, logos, case studies, benchmarks or certifications. The only published number is the $150 per hour time-and-materials rate. Future copy must not invent any of these.
 
 ## Product Principles
 
