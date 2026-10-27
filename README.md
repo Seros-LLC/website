@@ -103,3 +103,26 @@ node --test tools/test_business_tools.mjs
 node tools/test_roman_browser.mjs
 node tools/test_toolkit_browser.mjs
 ```
+
+### Mobile accessibility suite
+
+`tools/test_mobile_browser.mjs` loads every route at 320x640, 375x812, 390x844,
+412x915 and landscape 812x375 with touch emulation, plus 200% text at 375px. It
+fails on horizontal overflow, touch targets under 44x44 (24px floor at 200% text),
+form controls under 16px (iOS focus zoom), text under 12px, ASCII `pre` blocks
+exposed to screen readers, a header taking more than 28% of the first screen,
+axe WCAG 2.2 AA violations (when `AXE_PATH` is set), offerings filters that
+are sticky or unusable by touch, motion under `prefers-reduced-motion`, and
+primary navigation that is not reachable by keyboard and tap.
+
+```bash
+python3 tools/preview.py 8081 &
+PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs \
+CHROME_PATH=~/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome \
+AXE_PATH=/path/to/axe-core/axe.min.js \
+node tools/test_mobile_browser.mjs
+```
+
+When changing `assets/styles.css`, bump `styles.css?v=` in every HTML page,
+`tools/build.py`, `tools/build_offerings.py` and the pinned version in
+`tools/test_business_tools.mjs` and `tools/test_package_builder.mjs`.
