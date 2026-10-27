@@ -419,3 +419,33 @@ footer.site a:hover { text-decoration: underline; }
 @media (max-width: 480px) { .demo-stages li strong { display: none; } }
 @media (prefers-reduced-motion: reduce) { .demo-view > *, .demo-fields div, .demo-checks li { animation: none !important; } }
 .demo-view { color: var(--seros-ink); } .demo-view > p { margin: 0; color: var(--muted); font-size: .85rem; }
+/* Mobile accessibility pass: 44px touch targets, readable minimum type, compact header, no sticky filters on short screens. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.brand { min-height: 44px; }
+nav.site > a { min-width: 44px; justify-content: center; }
+footer.site a:not(.brand), .toc a { min-height: 44px; display: flex; align-items: center; }
+footer.site .fineprint a { display: inline-flex; min-height: 44px; align-items: center; }
+.demo-scenarios button { min-height: 44px; }
+@media (max-height: 600px) { .offer-controls { position: static; } }
+@media (max-width: 600px) {
+  .rail-header { min-height: 0; padding-block: .6rem; row-gap: 0; }
+  nav.site { gap: 0 .4rem; }
+  nav.site > a:not(.btn-nav-app) { font-size: .875rem; padding-inline: .2rem; }
+  nav.site .btn-nav-app { margin-top: .2rem; margin-bottom: .2rem; }
+}
+/* Phone type floor (portrait and landscape): nothing readable below 12px. */
+@media (max-width: 600px), (max-height: 500px) {
+  .eyebrow, .page-kicker, .hero-copy .eyebrow { font-size: .75rem; }
+  .hero-note, .demo-disclaimer, .demo-fallback, .fineprint, .principle-strip p { font-size: .8125rem; }
+  .art-label, .hero-art figcaption, .demo-kicker, .demo-topline, .demo-stages li span, .service-detail, .work-artifact > span, .work-artifact > div, .offer-id, .offer-unit, .offer-status, .offer-count, .service-no, .process-tag, .track-no, .motion-toggle, .demo-scenarios button, .footer-label, footer.site .cols h4 { font-size: .75rem; }
+  .demo-stages li strong, .site-demo .demo-stages li strong { font-size: .75rem; }
+  .doc table, .doc td, .doc th { font-size: .875rem; }
+  .demo-draft, .demo-message blockquote, .demo-fields dd, .demo-checks li, .demo-outcome p, .offer-controls label { font-size: 1rem; }
+  footer.site a:not(.brand) { font-size: .875rem; }
+  .eyebrow, .footer-label, footer.site .cols h4, footer.site .fineprint, .fineprint, .doc .fineprint { font-size: max(.75rem, 12px); }
+  .site-demo :is(figcaption, summary, li, time, span, dt, small) { font-size: max(.75rem, 12px); }
+}
+/* Form controls stay at 16px or larger so iOS Safari never zooms on focus. */
+input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea, .demo-draft { font-size: max(1rem, 16px); }
+footer.site a:not(.brand), nav.site > a { min-width: 44px; }
+footer.site .fineprint a { min-width: 44px; justify-content: center; }
