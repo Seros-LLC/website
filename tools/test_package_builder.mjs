@@ -230,9 +230,9 @@ test('shared stylesheet version is pinned consistently across every page and gen
     assert.ok(match, `${name} references the shared stylesheet`);
     versions.add(match[1]);
   }
-  assert.deepEqual([...versions], ['14'], `all pages share stylesheet version 14, got ${[...versions]}`);
+  assert.deepEqual([...versions], ['15'], `all pages share stylesheet version 15, got ${[...versions]}`);
   const build = readFileSync(join(ROOT, 'tools', 'build.py'), 'utf8');
-  assert.ok(build.includes('styles.css?v=14'), 'legal page generator uses same version');
+  assert.ok(build.includes('styles.css?v=15'), 'legal page generator uses same version');
   for (const page of ['index.html', 'packages.html']) {
     assert.match(readFileSync(join(ROOT, page), 'utf8'), /site-tools\.js\?v=3/);
   }
@@ -249,7 +249,7 @@ test('the page respects the CSP: no inline script, style or handlers', () => {
     '<link rel="canonical" href="https://seros.dev/packages">', 'property="og:title"',
     'property="og:description"', 'property="og:type"', 'content="https://seros.dev/packages"',
     'content="https://seros.dev/assets/og-card-2026-09.jpg"', 'name="twitter:card"',
-    'href="/assets/styles.css?v=14"', 'href="/assets/package-builder.css?v=1"',
+    'href="/assets/styles.css?v=15"', 'href="/assets/package-builder.css?v=1"',
     '<script src="/assets/package-builder.js?v=1" defer></script>', 'aria-live="polite"']) {
     assert.ok(html.includes(tag), `page has ${tag}`);
   }

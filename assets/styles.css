@@ -288,7 +288,6 @@ footer.site a:hover { text-decoration: underline; }
 }
 /* FORVM: stone, bronze and a terminal-cut sculpture. Content stays still and readable. */
 :root { --motion-ease: cubic-bezier(.2,.75,.25,1); }
-body { background-image: repeating-linear-gradient(115deg, transparent 0 170px, #1b3b6f03 171px, transparent 174px 340px); }
 .brand { letter-spacing: .12em; }
 .eyebrow, .page-kicker { letter-spacing: .13em; }
 .btn, .btn-nav-app, .demo-controls button { border-radius: 12px; transition: background .25s var(--motion-ease), color .25s var(--motion-ease), box-shadow .25s var(--motion-ease), transform .25s var(--motion-ease); }
@@ -349,9 +348,7 @@ body { background-image: repeating-linear-gradient(115deg, transparent 0 170px, 
 .glow-card::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; opacity: 0; pointer-events: none; background: radial-gradient(320px circle at var(--mx,50%) var(--my,50%), #95b2b038, transparent 60%); transition: opacity .35s var(--motion-ease); }
 .glow-card:hover::before { opacity: 1; }
 .btn.primary { transition: translate .25s var(--motion-ease), background .25s var(--motion-ease), box-shadow .25s var(--motion-ease), transform .25s var(--motion-ease); }
-.ascii-divider { overflow: hidden; padding-block: 1.25rem; background: var(--seros-paper); border-top: 1px solid var(--ink-line); }
-.ascii-divider pre, .ascii-wave { margin: 0; font: 14px/1 'Courier New', monospace; white-space: pre; overflow: hidden; user-select: none; }
-.ascii-divider pre { color: #95b2b0; text-align: center; }
+.ascii-wave { margin: 0; font: 14px/1 'Courier New', monospace; white-space: pre; overflow: hidden; user-select: none; }
 .close-band { position: relative; overflow: hidden; isolation: isolate; }
 .ascii-wave { position: absolute; z-index: -1; inset: auto 0 0; color: #95b2b0; opacity: .35; line-height: 1.15; }
 .eyebrow { font-variant-ligatures: none; }

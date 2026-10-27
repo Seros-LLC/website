@@ -25,7 +25,7 @@
   progress();
 
   /* 2. Reveal on scroll. Content is visible without JS; only enhanced pages hide then reveal. */
-  const reveal = document.querySelectorAll('.section-intro, .service-card, .process-list li, .work-artifact, .tool-invitation, .close-layout, .demo-copy, .ascii-divider');
+  const reveal = document.querySelectorAll('.section-intro, .service-card, .process-list li, .work-artifact, .tool-invitation, .close-layout, .demo-copy');
   reveal.forEach((el, i) => { el.classList.add('reveal'); el.style.setProperty('--stagger', `${(i % 4) * 80}ms`); });
   const revealer = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('revealed'); revealer.unobserve(entry.target); }

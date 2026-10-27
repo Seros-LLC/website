@@ -90,7 +90,7 @@ test('copy and download regenerate current entries and release download URL', as
 test('page has matching site shell, labels, fallback and deferred local script', () => {
   const nav = html.match(/<nav class="site"[\s\S]*?<\/nav>/)[0];
   assert.equal((nav.match(/<a /g) || []).length, 5);
-  assert.match(html, /styles\.css\?v=14/);
+  assert.match(html, /styles\.css\?v=15/);
   assert.match(html, /business-tools\.js\?v=1" defer><\/script>/);
   assert.match(html, /seros\.dev\/toolkit"/);
   assert.match(html, /#1b3b6f/);

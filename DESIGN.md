@@ -2,14 +2,14 @@
 name: Seros FORVM
 description: An independent consulting studio. Written advice, useful systems, human control.
 colors:
-  night: "#1b3b6f"
-  blue-deep: "#22271f"
-  blue: "#55432b"
-  ink: "#27291f"
-  vellum: "#e9e4d8"
-  paper: "#f6f3eb"
-  ice: "#eee5cf"
-  prism: "#d7bc85"
+  night: "#132a50"
+  blue-deep: "#163160"
+  blue: "#1b3b6f"
+  ink: "#1b3b6f"
+  vellum: "#e1ebe8"
+  paper: "#f0f7f4"
+  ice: "#f0f7f4"
+  prism: "#95b2b0"
   muted: "#606252"
   on-dark-muted: "#cccdbd"
   focus-dark: "#edcc85"
@@ -30,7 +30,7 @@ The FORVM iteration preserves the editorial layout and introduces the user's req
 
 ## Visual language
 
-- Navy framing, bronze action surfaces and warm marble reading sections.
+- Palette: Regal Navy #1b3b6f, Ash Grey #95b2b0, Mint Cream #f0f7f4. Navy framing and actions, ash grey ornament, mint cream reading sections.
 - Left-aligned serif headlines contrasted with practical sans-serif body copy.
 - Small monospace section numbers and record labels, never dashboard ornament.
 - Fine inscription rules, an arched sculpture frame, softly rounded controls and restrained shadows.
@@ -55,7 +55,7 @@ The FORVM iteration preserves the editorial layout and introduces the user's req
 - Semantic links for navigation and native buttons for state changes.
 - One primary action per local context. The email CTA opens the visitor's mail client, it does not submit or schedule anything automatically.
 - Decorative hero motion pauses offscreen, on hidden tabs or by user control. Reduced motion disables animations. Main copy never moves.
-- Focus is bronze on paper and amber on dark surfaces. Never remove outlines.
+- Focus is navy on light surfaces and ash grey on dark surfaces. Never remove outlines.
 
 ## Demonstration
 

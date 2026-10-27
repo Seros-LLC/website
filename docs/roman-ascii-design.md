@@ -6,7 +6,8 @@ Date: 2026-10-27. Local iteration only, no deployment.
 Keep the existing reading order and section layout. Restyle Seros as an ancient Roman information terminal with contemporary, precise controls. Ancient retro means inscriptions, arched sculpture, bronze characters and warm stone, not novelty fonts or unreadable body text. Apple-like polish is interpreted as responsive feedback, soft control corners, deliberate spacing and restrained physical motion, not copied branding.
 
 ## Visual system
-- Warm paper #f6f3eb, charcoal olive #171914, bronze accent #65502f, illuminated brass #d7bc85.
+- Palette (revised): Regal Navy #1b3b6f, Ash Grey #95b2b0, Mint Cream #f0f7f4.
+- Interaction layer (assets/roman-interact.js): pointer tilt and glyph ripple on the hero, card glow, scroll rule, eyebrow decode, ASCII wave in the closing band. All visual only, disabled for reduced motion and by the pause toggle.
 - Existing local Source Serif for monumental headings, system sans for readable prose, monospace for inscriptions and ASCII.
 - Existing engraving converted once in the browser to a 100 by 40 character sculpture. Original image remains the no-JavaScript or failed-canvas fallback.
 - Slow sculpture breath and orbital motion only inside the visible hero. Pause/resume is explicit, hidden tabs pause, reduced-motion disables animation. No moving copy, scroll hijack, cursor replacement, or flashing effects.
