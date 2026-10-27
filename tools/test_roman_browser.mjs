@@ -25,6 +25,11 @@ try {
     await page.emulateMedia({reducedMotion:'reduce'});
     assert.equal(await page.locator('.orbit-one').evaluate(el=>getComputedStyle(el).animationName),'none');
     await page.emulateMedia({reducedMotion:'no-preference'});
+    await page.locator('#process-heading').scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>!document.querySelector('.hero-art').classList.contains('in-view'));
+    assert.equal(await page.locator('.orbit-one').evaluate(el=>getComputedStyle(el).animationName),'none');
+    await page.locator('.hero-art').scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>document.querySelector('.hero-art').classList.contains('in-view'));
     if(process.env.SCREENSHOT_DIR) {
       mkdirSync(process.env.SCREENSHOT_DIR,{recursive:true});
       await page.screenshot({path:`${process.env.SCREENSHOT_DIR}/roman-${width}.png`,fullPage:true});

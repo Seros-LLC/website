@@ -2,7 +2,7 @@
 name: Seros FORVM
 description: An independent consulting studio. Written advice, useful systems, human control.
 colors:
-  night: "#171914"
+  night: "#1b3b6f"
   blue-deep: "#22271f"
   blue: "#55432b"
   ink: "#27291f"
@@ -30,7 +30,7 @@ The FORVM iteration preserves the editorial layout and introduces the user's req
 
 ## Visual language
 
-- Charcoal olive framing, bronze action surfaces and warm marble reading sections.
+- Navy framing, bronze action surfaces and warm marble reading sections.
 - Left-aligned serif headlines contrasted with practical sans-serif body copy.
 - Small monospace section numbers and record labels, never dashboard ornament.
 - Fine inscription rules, an arched sculpture frame, softly rounded controls and restrained shadows.

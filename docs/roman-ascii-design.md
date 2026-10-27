@@ -13,7 +13,7 @@ Keep the existing reading order and section layout. Restyle Seros as an ancient 
 - Shared styling carries through marketing, toolkit and generated policy documents. Policy wording is not manually changed.
 
 ## Business features
-A separate /tools destination keeps the main layout intact. Local-only service-fit guidance, workflow reference patterns, project brief generation/copy/download and an illustrative time-capacity calculator. These help communicate business needs, not simulate a client system. Existing approval demo is not expanded. No new demo, remote storage, analytics, account, invented price, or ROI promise.
+A separate /toolkit destination keeps the main layout intact. Local-only service-fit guidance, workflow reference patterns, project brief generation/copy/download and an illustrative time-capacity calculator. These help communicate business needs, not simulate a client system. Existing approval demo is not expanded. No new demo, remote storage, analytics, account, invented price, or ROI promise.
 
 ## Acceptance
 Real Chromium checks for responsive layout, accessibility scans, existing keyboard paths, pause/resume and reduced motion, useful-tool calculations and input validation, safe handling of user text, local copy/download and no remote submissions. Keep the preview at localhost:8081. Conversion and subjective preference require user review and are not automated-test claims.

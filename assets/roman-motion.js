@@ -10,7 +10,8 @@
   let paused = reduced.matches;
   function sync() {
     document.documentElement.classList.toggle('motion-paused', paused);
-    toggle.textContent = paused ? 'Resume motion' : 'Pause motion';
+    toggle.disabled = reduced.matches;
+    toggle.textContent = reduced.matches ? 'Reduced motion' : (paused ? 'Resume motion' : 'Pause motion');
     toggle.setAttribute('aria-pressed', String(paused));
   }
   toggle.hidden = false;

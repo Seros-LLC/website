@@ -90,3 +90,16 @@ npx vercel --prod --yes
 ```
 
 Afterwards, check the live page: `curl -sS -o /dev/null -w '%{http_code}' https://seros.dev/`.
+# Roman ASCII local iteration
+
+The FORVM direction keeps the existing layout and introduces marble, olive and bronze styling with a local ASCII engraving. Open `/` for the visual system and `/toolkit` for optional business planning helpers. Nothing is deployed automatically by editing locally. The existing preview is `http://localhost:8081`.
+
+Design scope: `docs/roman-ascii-design.md`. Motion has an explicit pause control, reduced-motion support and an original-image fallback. Tool entries are not sent to a server or written to persistent storage.
+
+Additional checks, using the same `PLAYWRIGHT_MODULE`, `CHROME_PATH` and `PREVIEW_URL` environment variables as the existing browser tests:
+
+```bash
+node --test tools/test_business_tools.mjs
+node tools/test_roman_browser.mjs
+node tools/test_toolkit_browser.mjs
+```

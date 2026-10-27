@@ -55,7 +55,7 @@ jobs:
           node-version: "22"
 
       - name: Package builder and site tools unit tests
-        run: node --test tools/test_package_builder.mjs tools/test_site_tools.mjs
+        run: node --test tools/test_package_builder.mjs tools/test_site_tools.mjs tools/test_business_tools.mjs
 
       - name: No secrets in tree
         run: |

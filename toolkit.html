@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business tools — Seros, LLC</title>
+<meta name="description" content="Optional planning tools: explore service fit, review human-approved workflow patterns, and prepare a project brief locally in your browser.">
+<link rel="canonical" href="https://seros.dev/toolkit">
+<meta property="og:title" content="Business tools — Seros, LLC">
+<meta property="og:description" content="Practical planning guides for your next workflow conversation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://seros.dev/toolkit">
+<meta property="og:image" content="https://seros.dev/assets/og-card-2026-09.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1b3b6f">
+<link rel="stylesheet" href="/assets/styles.css?v=14">
+<script src="/assets/business-tools.js?v=1" defer></script>
+</head>
+<body class="marketing-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap rail-header">
+    <a class="brand" href="/"><img src="/assets/icon-192.png" alt=""><span>SEROS</span><small>AI consulting</small></a>
+    <nav class="site" aria-label="Primary navigation">
+      <a href="/services">Services</a>
+      <a href="/work">Work</a>
+      <a href="/pricing">Engagements</a>
+      <a href="/security">Security</a>
+      <a class="btn-nav-app" href="/contact">Book a call <span aria-hidden="true">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+<main class="wrap doc doc-wide business-tools" id="main">
+  <p class="page-kicker">Business tools / Think through the work</p>
+  <h1>Bring a clearer workflow to the conversation.</h1>
+  <p class="lede">Use any of these optional tools, or skip straight to <a href="/contact">a conversation</a>. These are planning aids, not an assessment, suitability decision or guarantee.</p>
+  <p>Your entries stay in this page's memory. These tools do not send entries over the network or save them in browser storage. Your browser may restore form entries when you revisit. Copy and download only when you choose. Avoid entering secrets or personal customer data.</p>
+  <noscript><p>JavaScript is off. The rules, workflow patterns and brief prompts below remain readable. Interactive recommendations and brief export require JavaScript. You can copy the prompts into your own document, or <a href="/contact">contact Seros directly</a>.</p></noscript>
+  <section class="tool-card" aria-labelledby="fit-heading">
+    <h2 id="fit-heading">Service-fit guide</h2>
+    <p>Three answers suggest a starting conversation, not a scored assessment. No pricing or delivery commitment is calculated.</p>
+    <details><summary>Read the rules, in priority order</summary><ol>
+      <li>No accountable owner: name one before considering a build.</li>
+      <li>Unclear process: consider AI strategy and readiness assessment to map the work and alternatives.</li>
+      <li>Defined process, named owner, separate systems: discuss custom builds and integrations. AI may not be necessary.</li>
+      <li>Defined process, named owner, connected systems: discuss bounded agentic workflow automation, subject to discovery and human approval.</li>
+    </ol></details>
+    <form id="fit-form" data-enhanced hidden>
+      <div class="tool-grid">
+        <div class="tool-field"><label for="fit-clarity">How clearly is the process defined?</label><select id="fit-clarity" name="clarity" required><option value="">Choose process clarity</option><option value="unclear">We still need to map it</option><option value="defined">Steps and exceptions are documented</option></select></div>
+        <div class="tool-field"><label for="fit-systems">How do your systems connect?</label><select id="fit-systems" name="systems" required><option value="">Choose system context</option><option value="separate">Separate tools and manual re-entry</option><option value="connected">Connected systems and accessible data</option></select></div>
+        <div class="tool-field"><label for="fit-ownership">Who approves scope and consequential actions?</label><select id="fit-ownership" name="ownership" required><option value="">Choose ownership</option><option value="missing">No accountable owner yet</option><option value="named">A named person on our team</option></select></div>
+      </div>
+      <button class="btn" type="submit">Suggest a starting point</button>
+      <p class="tool-output" id="fit-output" role="status" aria-live="polite" aria-atomic="true">Choose three answers to see the rule that applies.</p>
+    </form>
+    <p><a href="/services">Read all service descriptions</a>. The guide covers only common starting points.</p>
+  </section>
+  <section class="tool-card" aria-labelledby="workflow-heading">
+    <h2 id="workflow-heading">Workflow explorer</h2>
+    <p>Common business patterns, not live demos or claims about a deployed system. Each follows input → work → human boundary → output.</p>
+    <div data-enhanced hidden role="group" aria-label="Choose a workflow pattern">
+      <button type="button" class="btn" data-workflow="intake" aria-pressed="true" aria-controls="workflow-detail">Request intake</button>
+      <button type="button" class="btn" data-workflow="reporting" aria-pressed="false" aria-controls="workflow-detail">Operations reporting</button>
+      <button type="button" class="btn" data-workflow="handoff" aria-pressed="false" aria-controls="workflow-detail">Sales-to-delivery handoff</button>
+    </div>
+    <div id="workflow-detail" class="tool-output" aria-live="polite" aria-atomic="true">
+      <h3 id="workflow-title">Customer request intake</h3>
+      <ol>
+        <li><strong>Input:</strong> <span id="workflow-input">An incoming request and an agreed routing checklist.</span></li>
+        <li><strong>Work:</strong> <span id="workflow-work">Extract requested details, flag missing information and draft a routing suggestion.</span></li>
+        <li><strong>Human boundary:</strong> <span id="workflow-boundary">A person checks sensitive details, chooses the owner and approves any customer reply.</span></li>
+        <li><strong>Output:</strong> <span id="workflow-output">A reviewed request with an owner and a draft response.</span></li>
+      </ol>
+    </div>
+    <details><summary>Read all patterns without using the explorer</summary>
+      <h3>Weekly operations reporting</h3><ol><li><strong>Input:</strong> Approved system exports and reporting definitions.</li><li><strong>Work:</strong> Reconcile records and draft a source-linked summary with exceptions.</li><li><strong>Human boundary:</strong> A person checks totals and exceptions before sharing or deciding.</li><li><strong>Output:</strong> A reviewed report, traceable sources and open questions.</li></ol>
+      <h3>Sales-to-delivery handoff</h3><ol><li><strong>Input:</strong> Approved scope, account notes and a delivery checklist.</li><li><strong>Work:</strong> Prepare a brief and identify missing commitments.</li><li><strong>Human boundary:</strong> Account and delivery owners confirm scope, dates and permissions before record changes.</li><li><strong>Output:</strong> An approved handoff brief with owners and open items.</li></ol>
+    </details>
+  </section>
+  <section class="tool-card" aria-labelledby="capacity-heading">
+    <h2 id="capacity-heading">Illustrative time-capacity calculator</h2>
+    <p>An optional, conservative sketch for discussion. It is not an ROI estimate, savings promise or quote. Your actual result depends on discovery, exceptions and review needs.</p>
+    <p><strong>Formula:</strong> net weekly minutes = max(0, tasks per week × minutes per task × proposed reduction ÷ 100 − review minutes per week).</p>
+    <form id="capacity-form" data-enhanced hidden novalidate>
+      <div class="tool-grid">
+        <div class="tool-field"><label for="capacity-tasks">Tasks per week</label><input id="capacity-tasks" name="tasks" type="number" inputmode="decimal" min="0" max="100000" step="any" required></div>
+        <div class="tool-field"><label for="capacity-minutes">Minutes per task</label><input id="capacity-minutes" name="minutes" type="number" inputmode="decimal" min="0" max="1440" step="any" required></div>
+        <div class="tool-field"><label for="capacity-reduction">Proposed reduction (%)</label><input id="capacity-reduction" name="reduction" type="number" inputmode="decimal" min="0" max="100" step="any" required></div>
+        <div class="tool-field"><label for="capacity-review">Review overhead (minutes per week)</label><input id="capacity-review" name="review" type="number" inputmode="decimal" min="0" max="100000" step="any" required></div>
+      </div>
+      <button class="btn" type="submit">Calculate illustration</button>
+      <p class="tool-output" id="capacity-output" role="status" aria-live="polite" aria-atomic="true">Enter four non-negative numbers.</p>
+    </form>
+  </section>
+  <section class="tool-card" aria-labelledby="brief-heading">
+    <h2 id="brief-heading">Prepare a project brief</h2>
+    <p>Use these prompts in your own document, or generate a plain-text draft below. All fields are optional. Nothing is submitted to Seros. Unknowns are useful too.</p>
+    <div id="brief-form">
+      <div class="tool-grid">
+        <div class="tool-field"><label for="brief-goal">Goal and success check</label><p id="goal-help">What should change, and how would you check it?</p><textarea id="brief-goal" name="goal" rows="3" maxlength="4000" aria-describedby="goal-help"></textarea></div>
+        <div class="tool-field"><label for="brief-process">Current process and friction</label><p id="process-help">Describe the steps, volume, exceptions and repeated work.</p><textarea id="brief-process" name="process" rows="3" maxlength="4000" aria-describedby="process-help"></textarea></div>
+        <div class="tool-field"><label for="brief-systems">Systems and data constraints</label><p id="systems-help">Name tools, access limits and sensitive data categories, not actual records.</p><textarea id="brief-systems" name="systems" rows="3" maxlength="4000" aria-describedby="systems-help"></textarea></div>
+        <div class="tool-field"><label for="brief-approval">Owner and human approval boundaries</label><p id="approval-help">Who owns the process? What must always wait for a person?</p><textarea id="brief-approval" name="approval" rows="3" maxlength="4000" aria-describedby="approval-help"></textarea></div>
+        <div class="tool-field"><label for="brief-scope">Scope, timing and open questions</label><p id="scope-help">Include what is out of scope, constraints and anything not yet decided.</p><textarea id="brief-scope" name="scope" rows="3" maxlength="4000" aria-describedby="scope-help"></textarea></div>
+      </div>
+      <div data-enhanced hidden>
+        <button type="button" class="btn" id="brief-generate">Generate brief</button>
+        <button type="button" class="btn" id="brief-copy">Copy current brief</button>
+        <button type="button" class="btn" id="brief-download">Download current brief (.txt)</button>
+        <p id="brief-status" role="status" aria-live="polite" aria-atomic="true">Copy and download include your current entries, even after edits.</p>
+        <div class="tool-field"><label for="brief-output">Generated brief (read-only, selectable)</label><textarea id="brief-output" class="tool-output" rows="14" readonly spellcheck="false"></textarea></div>
+      </div>
+    </div>
+    <p>Review the draft before sharing it. Ready to discuss it? <a href="/contact">Choose how to contact Seros</a> and share only what you intend.</p>
+  </section>
+</main>
+<footer class="site"><div class="wrap footer-grid">
+  <div><a class="brand foot-brand" href="/"><img src="/assets/icon-192.png" alt=""><span>SEROS</span></a><p class="foot-blurb">AI and agentic consulting for businesses.</p></div>
+  <div><p class="footer-label">Company</p><a href="/services">Services</a><a href="/work">Work</a><a href="/pricing">Engagements</a><a href="/packages">Build a package</a><a href="/contact">Contact</a></div>
+  <div><p class="footer-label">Trust</p><a href="/security">Security</a><a href="/privacy">Privacy</a><a href="/subprocessors">Subprocessors</a></div>
+  <div><p class="footer-label">Legal</p><a href="/terms">Terms</a><a href="/dpa">DPA</a><a href="/cookies">Cookies</a></div>
+</div><div class="wrap fineprint">&copy; 2026 Seros, LLC. Nothing on this site is legal, tax, or professional advice.</div></footer>
+</body>
+</html>
