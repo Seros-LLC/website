@@ -1,19 +1,19 @@
 ---
-name: Seros Practical Intelligence
+name: Seros FORVM
 description: An independent consulting studio. Written advice, useful systems, human control.
 colors:
-  night: "#030620"
-  blue-deep: "#080e38"
-  blue: "#142c9e"
-  ink: "#151b35"
-  vellum: "#f1f0eb"
-  paper: "#f8f7f3"
-  ice: "#dce3fa"
-  prism: "#afc1ff"
-  muted: "#565c6c"
-  on-dark-muted: "#bdc7e0"
-  focus-dark: "#ffd166"
-  focus-light: "#142c9e"
+  night: "#171914"
+  blue-deep: "#22271f"
+  blue: "#55432b"
+  ink: "#27291f"
+  vellum: "#e9e4d8"
+  paper: "#f6f3eb"
+  ice: "#eee5cf"
+  prism: "#d7bc85"
+  muted: "#606252"
+  on-dark-muted: "#cccdbd"
+  focus-dark: "#edcc85"
+  focus-light: "#55432b"
 typography:
   display: "Source Serif 4, Georgia, serif (600)"
   body: "Arial, Helvetica, sans-serif"
@@ -26,15 +26,15 @@ typography:
 
 Seros is an AI and agentic consulting firm, not a SaaS sign-up page. The site should help a business owner understand the offer, inspect the approach and start a free discovery conversation by email. Read `PRODUCT.md` before changing claims.
 
-The October 2026 overhaul replaces the accumulated Oath Gate/glass effects with a restrained editorial system. The existing cobalt identity and actual Seros engraving remain. The visual direction is a builder's decision made under the user's instruction to take the lead.
+The FORVM iteration preserves the editorial layout and introduces the user's requested ancient Roman ASCII direction with contemporary control polish. See `docs/roman-ascii-design.md` for scope and motion behavior.
 
 ## Visual language
 
-- Deep navy framing, cobalt action surfaces and warm paper reading sections.
+- Charcoal olive framing, bronze action surfaces and warm marble reading sections.
 - Left-aligned serif headlines contrasted with practical sans-serif body copy.
 - Small monospace section numbers and record labels, never dashboard ornament.
-- Fine rules and square-to-subtly-rounded surfaces. No glass blur, ambient loops, floating cards or decorative star icons.
-- The real engraving is the only illustrative image. A framed grid and static orbital rules give it context without covering the copy.
+- Fine inscription rules, an arched sculpture frame, softly rounded controls and restrained shadows.
+- The real engraving becomes a local ASCII sculpture with slow orbital motion, pause/resume and reduced-motion support. The original image remains a fallback.
 - No stock imagery, invented customer logos, fabricated metrics or testimonials.
 
 `assets/styles.css` is the token source of truth. Supporting aliases remain for the package builder. Do not reintroduce cascades of historical overrides.
@@ -54,8 +54,8 @@ The October 2026 overhaul replaces the accumulated Oath Gate/glass effects with 
 - Body line-height 1.65. Use 16px or larger for main mobile prose. Supporting metadata may be smaller, but remains high contrast.
 - Semantic links for navigation and native buttons for state changes.
 - One primary action per local context. The email CTA opens the visitor's mail client, it does not submit or schedule anything automatically.
-- Motion is limited to short hover color changes. Respect reduced motion including smooth scrolling.
-- Focus is cobalt on paper and amber on dark surfaces. Never remove outlines.
+- Decorative hero motion pauses offscreen, on hidden tabs or by user control. Reduced motion disables animations. Main copy never moves.
+- Focus is bronze on paper and amber on dark surfaces. Never remove outlines.
 
 ## Demonstration
 
