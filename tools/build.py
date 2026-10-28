@@ -123,7 +123,7 @@ def shell(title, desc, canonical, body):
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap rail-header">
-    <a class="brand" href="/"><img src="/assets/icon-192.png" alt=""><span>SEROS</span><small>AI consulting</small></a>
+    <a class="brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32"><span>SEROS</span><small>AI consulting</small></a>
     <nav class="site" aria-label="Primary navigation">
         {nav}
     </nav>
