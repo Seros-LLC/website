@@ -87,9 +87,9 @@ TEMPLATE = '''<!doctype html>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1b3b6f">
-<link rel="stylesheet" href="/assets/styles.css?v=17">
+<link rel="stylesheet" href="/assets/styles.css?v=18">
 <script src="/assets/offerings.js?v=2" defer></script>
-<script src="/assets/roman-interact.js?v=2" defer></script>
+<script src="/assets/roman-interact.js?v=3" defer></script>
 </head>
 <body class="marketing-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -105,10 +105,35 @@ TEMPLATE = '''<!doctype html>
     </nav>
   </div>
 </header>
-<main class="wrap doc doc-wide offerings" id="main">
-  <p class="page-kicker">Offerings / The full catalog</p>
-  <h1>{total} ways we can help.</h1>
+<main class="offerings" id="main">
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="wrap page-hero-grid">
+    <div class="page-hero-copy">
+    <p class="page-kicker">Offerings / The full catalog</p>
+    <h1 id="page-title">{total} ways we can help.</h1>
   <p class="lede">Explore 300 potential services, workflows and product concepts, grouped by area. Availability, feasibility and scope are confirmed in a conversation. Product concepts are not necessarily available off the shelf. Professional services are $150 per hour, and fixed-fee builds are quoted after a free discovery call. See <a href="/pricing">engagements</a> for how pricing works.</p>
+    </div>
+    <pre class="page-temple" aria-hidden="true"><span>                  .</span>
+<span>               .-' '-.</span>
+<span>            .-'   ^   '-.</span>
+<span>         .-'    C C C    '-.</span>
+<span>      .-'                   '-.</span>
+<span>   .-'_________________________'-.</span>
+<span>   |=============================|</span>
+<span>   |_____________________________|</span>
+<span>     [=]   [=]   [=]   [=]   [=]</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     |_|   |_|   |_|   |_|   |_|</span>
+<span>   |_____________________________|</span>
+<span> |_________________________________|</span></pre>
+  </div>
+</section>
+<div class="wrap doc doc-body">
   <div class="offer-controls" role="search" hidden data-offer-controls>
     <div class="tool-field"><label for="offer-search">Search offerings</label><input id="offer-search" type="search" autocomplete="off" placeholder="Try: invoices, intake, dental, CRM"></div>
     <div class="tool-field"><label for="offer-area">Area</label><select id="offer-area"><option value="">All areas</option>{filters}</select></div>
@@ -119,6 +144,7 @@ TEMPLATE = '''<!doctype html>
   {sections}
   <p class="offer-empty" hidden data-offer-empty>No offerings match. Try a broader word, or <a href="/contact">describe the problem</a> and we will tell you plainly whether we can help.</p>
   <aside class="tool-invitation"><span class="inscription" aria-hidden="true">[ CCC ]</span><div><h2>Not sure which one fits?</h2><p>Most engagements start with one process and one clear outcome. Tell us what is taking too much work and we will point you to the right starting place.</p></div><a class="btn primary" href="/contact">Book a free discovery call <span aria-hidden="true">&nearr;</span></a></aside>
+</div>
 </main>
 <footer class="site"><div class="wrap footer-grid">
   <div><a class="brand foot-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32"><span>SEROS</span></a><p class="foot-blurb">AI and agentic consulting for businesses.</p></div>

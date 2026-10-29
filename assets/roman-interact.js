@@ -25,10 +25,21 @@
   progress();
 
   /* 2. Reveal on scroll. Content is visible without JS; only enhanced pages hide then reveal. */
-  const reveal = document.querySelectorAll('.section-intro, .service-card, .process-list li, .work-artifact, .tool-invitation, .close-layout, .demo-copy');
+  const reveal = document.querySelectorAll('.section-intro, .service-card, .process-list li, .work-artifact, .tool-invitation, .close-layout, .demo-copy, .doc-main > section, .doc-main .card, .doc-main > .cta, .business-tools .tool-card');
   reveal.forEach((el, i) => { el.classList.add('reveal'); el.style.setProperty('--stagger', `${(i % 4) * 80}ms`); });
   const revealer = new IntersectionObserver(entries => {
-    for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('revealed'); revealer.unobserve(entry.target); }
+    for (const entry of entries) if (entry.isIntersecting) {
+      const el = entry.target;
+      el.classList.add('revealed');
+      revealer.unobserve(el);
+      // Once settled, remove the clip entirely so nothing (focus rings, shadows) is ever cut.
+      el.addEventListener('transitionend', function done(e) {
+        if (e.target !== el || e.propertyName !== 'transform') return;
+        el.removeEventListener('transitionend', done);
+        el.classList.add('reveal-done');
+      });
+      setTimeout(() => el.classList.add('reveal-done'), 2400);
+    }
   }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
   reveal.forEach(el => revealer.observe(el));
 
@@ -51,7 +62,7 @@
   const decoder = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) { decode(entry.target); decoder.unobserve(entry.target); }
   }, { threshold: .6 });
-  document.querySelectorAll('main .eyebrow').forEach(el => decoder.observe(el));
+  document.querySelectorAll('main .eyebrow, main .page-kicker').forEach(el => decoder.observe(el));
 
   /* 4. Hero sculpture: tilt toward pointer, glyph ripple on press. */
   const art = document.querySelector('.hero-art');

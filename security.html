@@ -17,8 +17,10 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
-<link rel="stylesheet" href="/assets/styles.css?v=17">
+<link rel="stylesheet" href="/assets/styles.css?v=18">
 <link rel="stylesheet" href="/assets/site-tools.css?v=1">
+<script src="/assets/page-rail.js?v=1" defer></script>
+<script src="/assets/roman-interact.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -29,15 +31,43 @@
         <a href="/services">Services</a>
         <a href="/work">Work</a>
         <a href="/pricing">Engagements</a>
-        <a href="/security">Security</a>
+        <a href="/security" aria-current="page">Security</a>
         <a class="btn-nav-app" href="/contact">Book a call &rarr;</a>
     </nav>
   </div>
 </header>
-<main class="wrap doc" id="main">
+<main id="main">
+<section class="page-hero" aria-labelledby="security-and-vulnerability-disclosure">
+  <div class="wrap page-hero-grid">
+    <div class="page-hero-copy">
+    <p class="page-kicker">Trust / Security</p>
+    <h1 id="security-and-vulnerability-disclosure">Security and Vulnerability Disclosure</h1>
+    <p class="lede">Effective date: September 22, 2026</p>
+    </div>
+    <pre class="page-temple" aria-hidden="true"><span>                  .</span>
+<span>               .-' '-.</span>
+<span>            .-'   ^   '-.</span>
+<span>         .-'    L E X    '-.</span>
+<span>      .-'                   '-.</span>
+<span>   .-'_________________________'-.</span>
+<span>   |=============================|</span>
+<span>   |_____________________________|</span>
+<span>     [=]   [=]   [=]   [=]   [=]</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     | |   | |   | |   | |   | |</span>
+<span>     |_|   |_|   |_|   |_|   |_|</span>
+<span>   |_____________________________|</span>
+<span> |_________________________________|</span></pre>
+  </div>
+</section>
+<div class="wrap doc doc-body has-rail">
+<nav class="page-rail numbered" aria-label="On this page"><p class="rail-label">Contents</p><ol><li><a href="#1-no-certification-is-claimed">1. No certification is claimed</a></li><li><a href="#2-how-we-build-and-run-software">2. How we build and run software</a></li><li><a href="#3-customer-responsibilities">3. Customer responsibilities</a></li><li><a href="#4-incident-notification">4. Incident notification</a></li><li><a href="#5-vulnerability-disclosure-policy">5. Vulnerability disclosure policy</a></li></ol></nav>
+<div class="doc-main legal">
 
-<h1 id="security-and-vulnerability-disclosure">Security and Vulnerability Disclosure</h1>
-<p>Effective date: September 22, 2026</p>
 <p>This page describes how we protect client data and how we build securely, and how to report
 a vulnerability. It is written for clients, prospects and security researchers.</p>
 <p>Seros is a solution development company. We do not currently operate a hosted customer-facing
@@ -199,15 +229,14 @@ initiated by a third party and you complied with this policy, we will make that 
 <p>We do not currently operate a paid bug bounty. We will credit researchers by name or handle
 in an acknowledgements list at https://seros.dev/security#56-rewards if they want it. Whether a bounty is
 introduced is no paid bounty at this stage; credit offered instead.</p>
+</div>
+</div>
 </main>
-<footer class="site">
-  <div class="wrap">
-    <p class="fineprint">&copy; 2026 Seros, LLC &middot;
-      <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot;
-      <a href="/acceptable-use">Acceptable use</a> &middot; <a href="/dpa">DPA</a> &middot;
-      <a href="/subprocessors">Subprocessors</a> &middot; <a href="/security">Security</a><br>
-      Nothing on this site is legal, tax, or professional advice.</p>
-  </div>
-</footer>
+<footer class="site"><div class="wrap footer-grid">
+  <div><a class="brand foot-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32"><span>SEROS</span></a><p class="foot-blurb">AI and agentic consulting for businesses.</p></div>
+  <div><p class="footer-label">Company</p><a href="/services">Services</a><a href="/offerings">All offerings</a><a href="/work">Work</a><a href="/pricing">Engagements</a><a href="/packages">Build a package</a><a href="/contact">Contact</a></div>
+  <div><p class="footer-label">Trust</p><a href="/security">Security</a><a href="/privacy">Privacy</a><a href="/subprocessors">Subprocessors</a><a href="/ai">How we use AI</a></div>
+  <div><p class="footer-label">Legal</p><a href="/terms">Terms</a><a href="/dpa">DPA</a><a href="/acceptable-use">Acceptable use</a><a href="/billing">Billing</a><a href="/cookies">Cookies</a></div>
+</div><div class="wrap fineprint">&copy; 2026 Seros, LLC. Nothing on this site is legal, tax, or professional advice.</div></footer>
 </body>
 </html>

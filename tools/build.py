@@ -10,6 +10,7 @@ The build FAILS if a placeholder has no value and draft mode is off, so an
 unreviewed document can never be published silently.
 """
 import json, pathlib, re, sys
+from html import escape as html_escape
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent      # .../seros/website
 LEGAL = ROOT.parent / "legal"
@@ -87,8 +88,44 @@ def rewrite_published_links(text):
     return text
 
 
+LEGAL_TEMPLE_WIDTH = 37
+
+
+def temple(word):
+    """Decorative engraved temple with an inscription. Hidden from assistive technology."""
+    w = " ".join(word) if len(word) * 2 - 1 <= 13 else word
+    cols = lambda cell: "   ".join([cell] * 5)
+    lines = [".", ".-' '-.", ".-'   ^   '-.", ".-'" + w.center(13) + "'-.", ".-'" + " " * 19 + "'-.",
+             ".-'" + "_" * 25 + "'-.", "|" + "=" * 29 + "|", "|" + "_" * 29 + "|", cols("[=]")] + \
+            [cols("| |")] * 6 + [cols("|_|"), "|" + "_" * 29 + "|", "|" + "_" * 33 + "|"]
+    centre = lambda s: (" " * ((LEGAL_TEMPLE_WIDTH - len(s)) // 2) + s).rstrip()
+    rows = "\n".join(f"<span>{html_escape(centre(l), quote=False)}</span>" for l in lines)
+    return f'<pre class="page-temple" aria-hidden="true">{rows}</pre>'
+
+
+def split_document(body):
+    """Lift the h1 and the effective-date line into the title band; the rest stays as rendered."""
+    m = re.match(r'\s*(<h1 id="([^"]+)">.*?</h1>)\s*(<p>Effective date:.*?</p>)?\s*', body, flags=re.S)
+    if not m:
+        return "", "", "", body
+    return m.group(1), m.group(2), m.group(3) or "", body[m.end():]
+
+
+def section_rail(body):
+    items = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body, flags=re.S)
+    if len(items) < 3:
+        return ""
+    links = "".join(f'<li><a href="#{i}">{re.sub(r"<[^>]+>", "", t).strip()}</a></li>' for i, t in items)
+    return f'<nav class="page-rail numbered" aria-label="On this page"><p class="rail-label">Contents</p><ol>{links}</ol></nav>\n'
+
+
 def shell(title, desc, canonical, body):
-    nav = "\n        ".join(f'<a href="{h}">{t}</a>' for t, h in NAV)
+    h1, h1_id, effective, body = split_document(body)
+    effective = effective.replace("<p>", '<p class="lede">', 1)
+    rail = section_rail(body)
+    rail_cls = " has-rail" if rail else ""
+    kicker = title
+    nav = "\n        ".join(f'<a href="{h}"{" aria-current=\"page\"" if h == canonical else ""}>{t}</a>' for t, h in NAV)
     # The studio sells engagements, not seats: the primary action is an enquiry,
     # and it stays on this origin so no cross-host flow is implied.
     nav += '\n        <a class="btn-nav-app" href="/contact">Book a call &rarr;</a>'
@@ -97,6 +134,7 @@ def shell(title, desc, canonical, body):
         banner = ('<p class="banner"><strong>Draft.</strong> This document has not yet been '
                   'reviewed by counsel and is not in force. It is published here for review only. '
                   'Bracketed tokens mark facts that still have to be filled in.</p>')
+    temple_html = temple("LEX")
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -116,8 +154,10 @@ def shell(title, desc, canonical, body):
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#030620">
-<link rel="stylesheet" href="/assets/styles.css?v=17">
+<link rel="stylesheet" href="/assets/styles.css?v=18">
 <link rel="stylesheet" href="/assets/site-tools.css?v=1">
+<script src="/assets/page-rail.js?v=1" defer></script>
+<script src="/assets/roman-interact.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -129,19 +169,30 @@ def shell(title, desc, canonical, body):
     </nav>
   </div>
 </header>
-<main class="wrap doc" id="main">
+<main id="main">
+<section class="page-hero" aria-labelledby="{h1_id}">
+  <div class="wrap page-hero-grid">
+    <div class="page-hero-copy">
+    <p class="page-kicker">Trust / {kicker}</p>
+    {h1}
+    {effective}
+    </div>
+    {temple_html}
+  </div>
+</section>
+<div class="wrap doc doc-body{rail_cls}">
+{rail}<div class="doc-main legal">
 {banner}
 {body}
+</div>
+</div>
 </main>
-<footer class="site">
-  <div class="wrap">
-    <p class="fineprint">&copy; 2026 Seros, LLC &middot;
-      <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot;
-      <a href="/acceptable-use">Acceptable use</a> &middot; <a href="/dpa">DPA</a> &middot;
-      <a href="/subprocessors">Subprocessors</a> &middot; <a href="/security">Security</a><br>
-      Nothing on this site is legal, tax, or professional advice.</p>
-  </div>
-</footer>
+<footer class="site"><div class="wrap footer-grid">
+  <div><a class="brand foot-brand" href="/"><img src="/assets/icon-192.png" alt="" width="32" height="32"><span>SEROS</span></a><p class="foot-blurb">AI and agentic consulting for businesses.</p></div>
+  <div><p class="footer-label">Company</p><a href="/services">Services</a><a href="/offerings">All offerings</a><a href="/work">Work</a><a href="/pricing">Engagements</a><a href="/packages">Build a package</a><a href="/contact">Contact</a></div>
+  <div><p class="footer-label">Trust</p><a href="/security">Security</a><a href="/privacy">Privacy</a><a href="/subprocessors">Subprocessors</a><a href="/ai">How we use AI</a></div>
+  <div><p class="footer-label">Legal</p><a href="/terms">Terms</a><a href="/dpa">DPA</a><a href="/acceptable-use">Acceptable use</a><a href="/billing">Billing</a><a href="/cookies">Cookies</a></div>
+</div><div class="wrap fineprint">&copy; 2026 Seros, LLC. Nothing on this site is legal, tax, or professional advice.</div></footer>
 </body>
 </html>
 """
