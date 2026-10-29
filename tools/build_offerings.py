@@ -113,24 +113,6 @@ TEMPLATE = '''<!doctype html>
     <h1 id="page-title">{total} ways we can help.</h1>
   <p class="lede">Explore 300 potential services, workflows and product concepts, grouped by area. Availability, feasibility and scope are confirmed in a conversation. Product concepts are not necessarily available off the shelf. Professional services are $150 per hour, and fixed-fee builds are quoted after a free discovery call. See <a href="/pricing">engagements</a> for how pricing works.</p>
     </div>
-    <pre class="page-temple" aria-hidden="true"><span>                  .</span>
-<span>               .-' '-.</span>
-<span>            .-'   ^   '-.</span>
-<span>         .-'    C C C    '-.</span>
-<span>      .-'                   '-.</span>
-<span>   .-'_________________________'-.</span>
-<span>   |=============================|</span>
-<span>   |_____________________________|</span>
-<span>     [=]   [=]   [=]   [=]   [=]</span>
-<span>     | |   | |   | |   | |   | |</span>
-<span>     | |   | |   | |   | |   | |</span>
-<span>     | |   | |   | |   | |   | |</span>
-<span>     | |   | |   | |   | |   | |</span>
-<span>     | |   | |   | |   | |   | |</span>
-<span>     | |   | |   | |   | |   | |</span>
-<span>     |_|   |_|   |_|   |_|   |_|</span>
-<span>   |_____________________________|</span>
-<span> |_________________________________|</span></pre>
   </div>
 </section>
 <div class="wrap doc doc-body">

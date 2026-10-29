@@ -10,7 +10,6 @@ The build FAILS if a placeholder has no value and draft mode is off, so an
 unreviewed document can never be published silently.
 """
 import json, pathlib, re, sys
-from html import escape as html_escape
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent      # .../seros/website
 LEGAL = ROOT.parent / "legal"
@@ -88,21 +87,6 @@ def rewrite_published_links(text):
     return text
 
 
-LEGAL_TEMPLE_WIDTH = 37
-
-
-def temple(word):
-    """Decorative engraved temple with an inscription. Hidden from assistive technology."""
-    w = " ".join(word) if len(word) * 2 - 1 <= 13 else word
-    cols = lambda cell: "   ".join([cell] * 5)
-    lines = [".", ".-' '-.", ".-'   ^   '-.", ".-'" + w.center(13) + "'-.", ".-'" + " " * 19 + "'-.",
-             ".-'" + "_" * 25 + "'-.", "|" + "=" * 29 + "|", "|" + "_" * 29 + "|", cols("[=]")] + \
-            [cols("| |")] * 6 + [cols("|_|"), "|" + "_" * 29 + "|", "|" + "_" * 33 + "|"]
-    centre = lambda s: (" " * ((LEGAL_TEMPLE_WIDTH - len(s)) // 2) + s).rstrip()
-    rows = "\n".join(f"<span>{html_escape(centre(l), quote=False)}</span>" for l in lines)
-    return f'<pre class="page-temple" aria-hidden="true">{rows}</pre>'
-
-
 def split_document(body):
     """Lift the h1 and the effective-date line into the title band; the rest stays as rendered."""
     m = re.match(r'\s*(<h1 id="([^"]+)">.*?</h1>)\s*(<p>Effective date:.*?</p>)?\s*', body, flags=re.S)
@@ -134,7 +118,6 @@ def shell(title, desc, canonical, body):
         banner = ('<p class="banner"><strong>Draft.</strong> This document has not yet been '
                   'reviewed by counsel and is not in force. It is published here for review only. '
                   'Bracketed tokens mark facts that still have to be filled in.</p>')
-    temple_html = temple("LEX")
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -177,7 +160,6 @@ def shell(title, desc, canonical, body):
     {h1}
     {effective}
     </div>
-    {temple_html}
   </div>
 </section>
 <div class="wrap doc doc-body{rail_cls}">
