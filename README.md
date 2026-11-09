@@ -1,9 +1,10 @@
-# seros.dev — marketing site
+# seros.dev — Marketing & Legal Site Source
 
-Static HTML for Seros, LLC, an AI and agentic consulting firm. There is no framework and
-no build step for the marketing pages. The legal pages are generated from the private
-`legal` repository, so each policy has one source of truth.
+[![Live Site](https://img.shields.io/badge/Live_Site-seros.dev-132a50?style=for-the-badge&labelColor=1b3b6f&color=c9a646)](https://seros.dev)
+[![Architecture](https://img.shields.io/badge/Architecture-Frameworkless_HTML%2FCSS-132a50?style=for-the-badge&labelColor=1b3b6f&color=5e7f96)](https://seros.dev)
+[![Legal Pipeline](https://img.shields.io/badge/Legal_Pipeline-Python_Rendered-132a50?style=for-the-badge&labelColor=1b3b6f&color=2f6b45)](https://seros.dev)
 
+Static HTML source for [seros.dev](https://seros.dev), the public web presence for Seros, LLC (AI and agentic consulting). There is no framework, no runtime bundle, and no client-side build step for the marketing pages. The legal documentation pages are generated directly from Markdown sources in the private `legal` repository to maintain a single authoritative source of truth.
 ## Layout
 
 | Path | What it is |
