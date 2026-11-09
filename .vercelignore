@@ -6,3 +6,4 @@ tools/
 site.json
 LICENSE
 __pycache__/
+.env*

@@ -91,6 +91,49 @@ npx vercel --prod --yes
 ```
 
 Afterwards, check the live page: `curl -sS -o /dev/null -w '%{http_code}' https://seros.dev/`.
+
+## Contact enquiry form
+
+`contact.html` preserves the email option and adds a real, same-origin form.
+`api/contact.mjs` is a dependency-free Vercel Node function with the documented
+Web Standard `default { fetch(request) }` export; deploy from this website root,
+not the parent repository. No package.json or marketing-page build is required.
+Static-only previews cannot run the function.
+
+Set `SEROS_WEBSITE_INGEST_SECRET` (random, at least 32 characters) in the website
+Vercel project's server environment. The **same** scoped secret must be configured
+on SerosOS and its Google-auth gateway. Never put it in HTML or assets. Optional
+`SEROS_WEBSITE_INGEST_URL` defaults to
+`https://os.seros.dev/api/webhooks/seros-website`; only HTTPS and that exact path
+are accepted. See `.env.example`. The OS also needs its existing
+`SEROS_CRM_DATABASE_URL`. Keep every other OS route authenticated; only the exact
+POST webhook may bypass login, and only after checking the scoped secret.
+
+Only `https://seros.dev` and `https://www.seros.dev` browser Origins are accepted.
+The serverless endpoint validates and size-limits the JSON, checks a honeypot,
+rate-limits attempts, strips browser credentials and forwards the approved Origin
+and a server-generated client hash. No CAPTCHA provider is needed. The existing
+CSP permits same-origin submission; no CORS or external browser connection is added.
+
+The OS durably stores the enquiry in its `/enquiries` inbox (linked from Clients)
+and transactionally creates/links a CRM contact plus an inbound activity. Browser
+retries reuse a submission UUID; changed content with the same ID is rejected.
+If CRM is unavailable, the accepted inbox entry remains visibly pending and can
+be retried by a confirmed operator action. No automatic replies or marketing
+subscriptions occur, and existing CRM contacts are not changed. Full deployment,
+limits, recovery and privacy/retention notes are in FounderOS
+`docs/WEBSITE-ENQUIRIES.md`.
+
+Contact-only checks never submit real data:
+
+```sh
+node --test tools/test_contact.mjs tools/test_contact_form.mjs
+```
+
+They include a loopback HTTP harness for the real exported handler and a retry
+behavior fixture, but do not replace a hosted Vercel adapter or browser rendering
+check. The website and OS are not deployed by these checks.
+
 # Roman ASCII local iteration
 
 The FORVM direction keeps the existing layout and introduces marble, olive and bronze styling with a local ASCII engraving. Open `/` for the visual system and `/toolkit` for optional business planning helpers. Nothing is deployed automatically by editing locally. The existing preview is `http://localhost:8081`.
