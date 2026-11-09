@@ -127,3 +127,13 @@ node tools/test_mobile_browser.mjs
 When changing `assets/styles.css`, bump `styles.css?v=` in every HTML page,
 `tools/build.py`, `tools/build_offerings.py` and the pinned version in
 `tools/test_business_tools.mjs` and `tools/test_package_builder.mjs`.
+
+### Visual polish review — 2026-11-09
+
+The before/after visual polish was approved for release. Review fixes preserve
+form-focus outlines in forced colors and suppress button and package-option
+hover/press movement with reduced motion, without changing the normal styling.
+Verified in Chromium: focused package/toolkit fields retain a 3px outline with
+forced colors, and package, navigation, primary, demo and toolkit controls do not
+move on hover with reduced motion. Earlier local checks passed (build, links,
+positioning, 34 Node tests; browser suites: 72 main, 1057 mobile, 158 secondary).
